@@ -6,6 +6,18 @@ manaPotion = [
     "Mana Potion", 25, 5
 ]
 
+bomb = [
+    "Bomb", 50, 3
+]
+
+repel = [
+    "Repel", 100, 2
+]
+
+levelUpPotion = [
+    "Level-Up Potion", 200, 1
+]
+
 class ShopNPCs:
     def __init__(self):
         self.itemsInShop = {"Health Potion": [25, 5], "Mana Potion": 25, "Bomb": 50, "Repel": 100, "Level-Up Potion": 200}
