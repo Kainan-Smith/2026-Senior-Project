@@ -32,7 +32,7 @@ levelUpPotion.amount = 2
 
 newSword = ShopItem()
 newSword.name = "New Sword"
-newSword.price = 125
+newSword.price = 150
 newSword.amount = 1
 
 newerSword = ShopItem()
@@ -40,26 +40,61 @@ newerSword.name = "Newer Sword"
 newerSword.price = 200
 newerSword.amount = 1
 
-world1Items = [
+newestSword = ShopItem()
+newestSword.name = "Newest Sword"
+newestSword.price = 250
+newestSword.amount = 1
+
+area1Items = [
+    healthPotion, bomb
+]
+
+area2Items = [
     healthPotion, manaPotion, bomb, repel
 ]
 
-world2Items = [
+area3Items = [
+    healthPotion, manaPotion, bomb, repel, levelUpPotion
+]
+
+area4Items = [
     healthPotion, manaPotion, bomb, repel, levelUpPotion, newSword
 ]
-    
+
+area5Items = [
+    healthPotion, manaPotion, bomb, repel, levelUpPotion, newerSword
+]
+
+area6to8Items = [
+    healthPotion, manaPotion, bomb, repel, levelUpPotion, newestSword
+]
+
+devAreaItems = [
+    healthPotion, manaPotion, bomb, repel, levelUpPotion, newSword, newerSword, newestSword
+]
+
 def displayShop(shopItems):
     print(f"{'Item' :<20}{'Price' :<8}{'Amount' :<8}")
     print("=" * 34)
     for item in range(len(shopItems)):
-        print(f"{shopItems[item][0] :<20}{'$' + str(shopItems[item][1]) :<8}{shopItems[item][2] :<8}")
+        print(f"{shopItems[item].name :<20}{'$' + str(shopItems[item].price) :<8}{shopItems[item].amount :<8}")
 
-def openShop(world):
-    if world == 1:
-        displayShop(world1Items)
-    if world == 2:
-        displayShop(world2Items)
+def openShop(area):
+    if area == 1:
+        displayShop(area1Items)
+    elif area == 2:
+        displayShop(area2Items)
+    elif area == 3:
+        displayShop(area3Items)
+    elif area == 4:
+        displayShop(area4Items)
+    elif area == 5:
+        displayShop(area5Items)
+    elif area == 6 or area == 7 or area == 8:
+        displayShop(area6to8Items)
+    elif area == 0:
+        displayShop(devAreaItems)
 
-world = int(input())
+area = int(input())
 
-openShop(world)
+openShop(area)
