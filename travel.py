@@ -4,7 +4,8 @@ availablePlaces = []
 
 def go_to_new_place(place):
     # place variable is where you currently are
-    # Use the "availablePlaces" list to try and condense this code into less lines.
+    # Try using the "availablePlaces" list to try and condense this code into less lines.
+    # Try using Xaiden's dictionary method (Just ask him)
     newPlace = False
     while newPlace == False:
         if place == 1:
