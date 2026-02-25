@@ -56,6 +56,5 @@ def go_to_new_place(place):
     visitedPlaces.append(place)
     return newPlace
 
-currentPlace = go_to_new_place(currentPlace)
 print("Current Area:", currentPlace)
-print("Places you've been:", visitedPlaces)
+print("Area you've been:", visitedPlaces)

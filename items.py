@@ -36,12 +36,12 @@ repel.amount = 2
 repel.number = "N/A"
 repel.desc = "Skips next encounter."
 
-levelUpPotion = InventoryAndShopItem()
-levelUpPotion.name = "Level-Up Potion"
-levelUpPotion.price = 100
-levelUpPotion.amount = 2
-levelUpPotion.number = "N/A"
-levelUpPotion.desc = "Levels up your character 1 time."
+experiencePotion = InventoryAndShopItem()
+experiencePotion.name = "Experience Potion"
+experiencePotion.price = 100
+experiencePotion.amount = 2
+experiencePotion.number = "N/A"
+experiencePotion.desc = "Levels up your character 1 time."
 
 newSword = InventoryAndShopItem()
 newSword.name = "New Sword"
@@ -73,21 +73,21 @@ area2Items = [
 ]
 
 area3Items = [
-    healthPotion, manaPotion, bomb, repel, levelUpPotion
+    healthPotion, manaPotion, bomb, repel, experiencePotion
 ]
 
 area4Items = [
-    healthPotion, manaPotion, bomb, repel, levelUpPotion, newSword
+    healthPotion, manaPotion, bomb, repel, experiencePotion, newSword
 ]
 
 area5Items = [
-    healthPotion, manaPotion, bomb, repel, levelUpPotion, newerSword
+    healthPotion, manaPotion, bomb, repel, experiencePotion, newerSword
 ]
 
 area6to8Items = [
-    healthPotion, manaPotion, bomb, repel, levelUpPotion, newestSword
+    healthPotion, manaPotion, bomb, repel, experiencePotion, newestSword
 ]
 
-devAreaItems = [
-    healthPotion, manaPotion, bomb, repel, levelUpPotion, newSword, newerSword, newestSword
+allItems = [
+    healthPotion, manaPotion, bomb, repel, experiencePotion, newSword, newerSword, newestSword
 ]
