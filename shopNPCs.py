@@ -1,35 +1,44 @@
-# These lists consist of the item's name, price, and quantity in the shop
-healthPotion = [
-    "Health Potion", 25, 5
-]
+class ShopItem:
+    '''The ShopItem class makes a template for items that will appear in the shop'''
+    def __init__(self):
+        self.name = ""
+        self.price = 0
+        self.amount = 0
 
-healthPotion = ShopItem():
+healthPotion = ShopItem()
 healthPotion.name = "Health Potion"
-h
+healthPotion.price = 25
+healthPotion.amount = 5
 
-manaPotion = [
-    "Mana Potion", 25, 5
-]
+manaPotion = ShopItem()
+manaPotion.name = "Mana Potion"
+manaPotion.price = 25
+manaPotion.amount = 5
 
-bomb = [
-    "Bomb", 50, 3
-]
+bomb = ShopItem()
+bomb.name = "Bomb"
+bomb.price = 50
+bomb.amount = 3
 
-repel = [
-    "Repel", 100, 2
-]
+repel = ShopItem()
+repel.name = "Repel"
+repel.price = 100
+repel.amount = 2
 
-levelUpPotion = [
-    "Level-Up Potion", 100, 1
-]
+levelUpPotion = ShopItem()
+levelUpPotion.name = "Level-Up Potion"
+levelUpPotion.price = 100
+levelUpPotion.amount = 2
 
-newSword = [
-    "New Sword", 125, 1
-]
+newSword = ShopItem()
+newSword.name = "New Sword"
+newSword.price = 125
+newSword.amount = 1
 
-newerSword = [
-    "Newer Sword", 200, 1
-]
+newerSword = ShopItem()
+newerSword.name = "Newer Sword"
+newerSword.price = 200
+newerSword.amount = 1
 
 world1Items = [
     healthPotion, manaPotion, bomb, repel
