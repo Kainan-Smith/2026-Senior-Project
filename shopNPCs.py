@@ -2,6 +2,11 @@
 healthPotion = [
     "Health Potion", 25, 5
 ]
+
+healthPotion = ShopItem():
+healthPotion.name = "Health Potion"
+h
+
 manaPotion = [
     "Mana Potion", 25, 5
 ]
@@ -15,26 +20,37 @@ repel = [
 ]
 
 levelUpPotion = [
-    "Level-Up Potion", 200, 1
+    "Level-Up Potion", 100, 1
 ]
 
-class ShopNPCs:
-    def __init__(self):
-        self.itemsInShop = {"Health Potion": [25, 5], "Mana Potion": 25, "Bomb": 50, "Repel": 100, "Level-Up Potion": 200}
+newSword = [
+    "New Sword", 125, 1
+]
 
-world1Shop = ShopNPCs
-world2Shop = ShopNPCs
-world3Shop = ShopNPCs
-world4Shop = ShopNPCs
-world5Shop = ShopNPCs
-world6Shop = ShopNPCs
-world7Shop = ShopNPCs
-world8Shop = ShopNPCs
+newerSword = [
+    "Newer Sword", 200, 1
+]
+
+world1Items = [
+    healthPotion, manaPotion, bomb, repel
+]
+
+world2Items = [
+    healthPotion, manaPotion, bomb, repel, levelUpPotion, newSword
+]
+    
+def displayShop(shopItems):
+    print(f"{'Item' :<20}{'Price' :<8}{'Amount' :<8}")
+    print("=" * 34)
+    for item in range(len(shopItems)):
+        print(f"{shopItems[item][0] :<20}{'$' + str(shopItems[item][1]) :<8}{shopItems[item][2] :<8}")
 
 def openShop(world):
-    pass
     if world == 1:
-        for item in range(len(world1Items)):
-            shopItem = list(world1Items.keys())[item]
-            price = list(world1Items.values())[item]
-            print(f"Item: {world1Items}")
+        displayShop(world1Items)
+    if world == 2:
+        displayShop(world2Items)
+
+world = int(input())
+
+openShop(world)
