@@ -3,6 +3,7 @@ import travel
 import inventory 
 
 def displayShop(shopArea):
+    # Prints the table view of the shop.
     print(f"{'Item' :<20}{'Price' :<8}{'Amount' :<8}{'Held' :<8}{'|' :<8}{'Description' :<32}")
     print(f"{"=" * 44}{'|'}{'=' * 50}")
     for item in range(len(shopArea)):

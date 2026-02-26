@@ -1,6 +1,7 @@
 import items
 
 def displayInventory():
+    # Prints the table view of the inventory.
     print(f"{'Item' :<20}{'Held' :<8}{'|' :<8}{'Description' :<32}")
     print(f"{"=" * 28}{'|'}{'=' * 40}")
     for item in range(len(items.allItems)):
