@@ -9,5 +9,3 @@ def displayInventory():
             print(f"{items.allItems[item].name :<20}{items.allItems[item].held :<8}{'|' :<8}{shopArea[item].desc :<32}")
 
 money = 100
-
-displayInventory()
