@@ -6,6 +6,8 @@ def displayInventory():
     print(f"{"=" * 28}{'|'}{'=' * 40}")
     for item in range(len(items.allItems)):
         if items.allItems[item].held > 0:
-            print(f"{items.allItems[item].name :<20}{items.allItems[item].held :<8}{'|' :<8}{shopArea[item].desc :<32}")
+            print(f"{items.allItems[item].name :<20}{items.allItems[item].held :<8}{'|' :<8}{items.allItems[item].desc :<32}")
+    print(f"Money: {money}")
 
 money = 100
+displayInventory()
