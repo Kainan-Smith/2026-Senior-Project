@@ -43,8 +43,8 @@ def check_modifiers(char):
     maxHealth = 100 + (char.vitality * 20)
     maxMana = 100 + (char.arcana * 20)
     hitChance = 75 + (char.accuracy * 5)
-    spellAttackModifier = (char.intelligence * 20)
-    physicalAttackModifier = (char.strength * 20)
+    spellAttackModifier = (char.intelligence * 10)
+    physicalAttackModifier = (char.strength * 10)
     defenseModifier = (char.endurance * 10)
     modifiers = {
         "Health": maxHealth,

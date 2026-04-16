@@ -91,3 +91,5 @@ area6to8Items = [
 allItems = [
     healthPotion, manaPotion, bomb, repel, experiencePotion, newSword, newerSword, newestSword
 ]
+
+currentWeapon = 
