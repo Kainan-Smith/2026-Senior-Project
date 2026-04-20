@@ -49,3 +49,5 @@ def startShopping(area, money):
 area = travel.currentPlace
 
 startShopping(area, inventory.money)
+
+inventory.displayInventory()

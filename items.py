@@ -7,6 +7,7 @@ class InventoryAndShopItem:
         self.held = 0       # The amount of the item the player is holding
         self.number = 0     # The number associated with the item, either Attack Modifier, Defense Modifier, or Healing.
         self.desc = ""      # A brief description of the item
+        self.weapon = False
 
 healthPotion = InventoryAndShopItem()
 healthPotion.name = "Health Potion"
@@ -49,6 +50,7 @@ newSword.price = 150
 newSword.amount = 1
 newSword.number = 15
 newSword.desc = "A new sword."
+newSword.weapon = True
 
 newerSword = InventoryAndShopItem()
 newerSword.name = "Newer Sword"
@@ -56,6 +58,7 @@ newerSword.price = 200
 newerSword.amount = 1
 newerSword.number = 20
 newerSword.desc = "A newer sword!"
+newerSword.weapon = True
 
 newestSword = InventoryAndShopItem()
 newestSword.name = "Newest Sword"
@@ -63,6 +66,7 @@ newestSword.price = 250
 newestSword.amount = 1
 newestSword.number = 25
 newestSword.desc = "The newest sword !!"
+newestSword.weapon = True
 
 area1Items = [
     healthPotion, bomb
@@ -91,5 +95,3 @@ area6to8Items = [
 allItems = [
     healthPotion, manaPotion, bomb, repel, experiencePotion, newSword, newerSword, newestSword
 ]
-
-currentWeapon = 
