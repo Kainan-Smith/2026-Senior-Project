@@ -43,8 +43,8 @@ def check_modifiers(char):
     maxHealth = 100 + (char.vitality * 20)
     maxMana = 100 + (char.arcana * 20)
     hitChance = 75 + (char.accuracy * 5)
-    spellAttackModifier = (char.intelligence * 10)
-    physicalAttackModifier = (char.strength * 10)
+    spellAttackModifier = 1 + (char.intelligence * 0.2)
+    physicalAttackModifier = 1 + (char.strength * 0.2)
     defenseModifier = (char.endurance * 10)
     modifiers = {
         "Health": maxHealth,
@@ -97,6 +97,7 @@ def chooseCharacter(choice):
         character = paladin
     return character
 
-playerChoice = input("Choose a character (Warrior, Mage, or Paladin):\n").lower()
-playerCharacter = chooseCharacter(playerChoice)
+#    playerChoice = input("Choose a character (Warrior, Mage, or Paladin):\n").lower()
+#    playerCharacter = chooseCharacter(playerChoice)
+playerCharacter = warrior
 stats = check_modifiers(playerCharacter)

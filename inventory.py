@@ -10,16 +10,18 @@ def displayInventory():
             print(f"{items.allItems[item].name :<20}{items.allItems[item].held :<8}{'|' :<8}{items.allItems[item].desc :<32}")
     print(f"Money: {money}")
     global currentWeapon
-    print(f"Current Weapon: {currentWeapon}")
+    print(f"Current Weapon: {currentWeapon.name}")
     answer = input("Change Weapons? (Yes or No) ").title()
     if answer == "Yes":
         weaponChange = False
         while weaponChange == False:
-            newWeapon = input("Select New Weapon: ").title
+            newWeapon = input("Select New Weapon: ").title()
             for item in items.allItems:
-                if item.name == newWeapon and item.weapon:
+                if item.name == newWeapon:
                     currentWeapon = item
-                    weaponChange == True
+                    print(currentWeapon.name)
+                    weaponChange = True
+                    print(weaponChange)
         displayInventory()
 
     
