@@ -1,5 +1,5 @@
 import items
-currentWeapon = 0
+currentWeapon = items.newSword
 
 def displayInventory():
     # Prints the table view of the inventory.
