@@ -21,16 +21,7 @@ def displayHealth(total, current):
         checking += unit
     print("]")
 
-def enemyTurn(player):
-    damage = 30
-    print("Enemy Attacks Player for", damage, " damage!")
-    return damage
-
-while playerHealth > 0 and enemyHealth > 0 and userAction != "Q":
-    print("Player: ", end="")
-    displayHealth(playerTotal, playerHealth)
-    print("Enemy: ", end="")
-    displayHealth(enemyTotal, enemyHealth)
+def userTurn(enemy):
     guarding = False
     print("What will you do?")
     userAction = input(f"{"Attack":<12}{"Spell":<12}\n{"Guard":<12}{"Items"}\n").title()
@@ -43,4 +34,17 @@ while playerHealth > 0 and enemyHealth > 0 and userAction != "Q":
         guarding = True
     elif userAction == "Items":
         pass
-    playerHealth -= enemyTurn(playerHealth)
+
+def enemyTurn(player):
+    damage = 30
+    print("Enemy Attacks Player for", damage, " damage!")
+    return damage
+
+def combatLoop(playerH, playerT, enemyH, enemyT)
+    while playerHealth > 0 and enemyHealth > 0:
+        print("Player: ", end="")
+        displayHealth(playerTotal, playerHealth)
+        print("Enemy: ", end="")
+        displayHealth(enemyTotal, enemyHealth)
+        
+        playerHealth -= enemyTurn(playerHealth)
