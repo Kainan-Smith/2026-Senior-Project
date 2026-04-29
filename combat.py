@@ -21,6 +21,7 @@ def displayHealth(total, current):
         checking += unit
     print("]")
 
+# Delete this function
 def userTurn(enemy):
     guarding = False
     print("What will you do?")
@@ -34,6 +35,15 @@ def userTurn(enemy):
         guarding = True
     elif userAction == "Items":
         pass
+
+def attack(atkMod):
+
+def spell(psiMod):
+
+def guard(defMod):
+
+def items():
+
 
 def enemyTurn(player):
     damage = 30
