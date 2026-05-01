@@ -3,14 +3,38 @@ import items
 import inventory
 import enemy
 
+character.hero.currentWeapon = items.basicSword
+character.hero.currentStaff = items.basicStaff
+
 def displayHealth(char):
     unit = char.maxHealth / 25
     checking = 0
+    yellow = "\x1b[33mI\x1b[0m"
+    green = "\x1b[32mI\x1b[0m"
+    red = "\x1b[31mI\x1b[0m"
     print(f"[{int(char.currentHealth)}/{char.maxHealth}]")
     print("[", end="")
     while checking < char.maxHealth:
         if checking <= char.currentHealth:
-            print("I", end="")
+            if char.currentHealth <= char.maxHealth / 4:
+                print(red, end="")   # Health bar is yellow if 25-50%
+            elif char.currentHealth < char.maxHealth / 2:
+                print(yellow, end="")      # Health bar is red if 0-25%
+            else:
+                print(green, end="")
+        else:
+            print("-", end="")
+        checking += unit
+    print("]")
+
+def displayMana(char):
+    unit = char.maxMana / 25
+    checking = 0
+    print(f"[{int(char.currentMana)}/{char.maxMana}]")
+    print("[", end="")
+    while checking <= char.maxMana:
+        if checking <= char.currentMana:
+            print("\x1b[34mI\x1b[0m", end="")
         else:
             print("-", end="")
         checking += unit
@@ -25,7 +49,6 @@ def userTurn(player, enemy):
         pass
     elif userAction == "Guard" or userAction == "3":
         player.defenseMod = guardFunction(player.defenseMod)
-
     elif userAction == "Items" or userAction == "4":
         pass
 
@@ -44,13 +67,13 @@ def items():
 def enemyTurn(enemy, player):
     damage = int(enemy.damage * player.defenseMod)
     print("Enemy Attacks Player for", damage, "damage!")
-    return damage
+    player.currentHealth -= damage
 
 def combatLoop(player, enemy):
     while player.currentHealth > 0 and enemy.currentHealth >= 0:
         print("Player: ", end="")
         displayHealth(player)
-        print(player.currentHealth, player.maxHealth)
+        displayMana(player)
         print("Enemy: ", end="")
         displayHealth(enemy)
         userTurn(player, enemy)
@@ -58,3 +81,4 @@ def combatLoop(player, enemy):
         player.defenseMod = 1 - (player.endurance / 10)
 
 combatLoop(character.hero, enemy.goblin)
+

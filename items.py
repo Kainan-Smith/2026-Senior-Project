@@ -8,9 +8,11 @@ class InventoryAndShopItem:
         self.number = 0     # The number associated with the item, either Attack Modifier, Defense Modifier, or Healing.
         self.desc = ""      # A brief description of the item
         self.weapon = False
+        self.staff = False
 
 healthPotion = InventoryAndShopItem()
 healthPotion.name = "Health Potion"
+healthPotion.held = 1
 healthPotion.price = 25
 healthPotion.amount = 5
 healthPotion.number = 20
@@ -44,6 +46,14 @@ experiencePotion.amount = 2
 experiencePotion.number = "N/A"
 experiencePotion.desc = "Levels up your character 1 time."
 
+basicSword = InventoryAndShopItem()
+basicSword.name = "Basic Sword"
+basicSword.held = 1
+basicSword.amount = 1
+basicSword.number = 10
+basicSword.desc = "A basic sword..."
+basicSword.weapon = True
+
 newSword = InventoryAndShopItem()
 newSword.name = "New Sword"
 newSword.price = 150
@@ -68,6 +78,38 @@ newestSword.number = 25
 newestSword.desc = "The newest sword !!"
 newestSword.weapon = True
 
+basicStaff = InventoryAndShopItem()
+basicStaff.name = "Basic Staff"
+basicStaff.held = 1
+basicStaff.amount = 1
+basicStaff.number = 10
+basicStaff.desc = "A basic staff..."
+basicStaff.staff = True
+
+newStaff = InventoryAndShopItem()
+newStaff.name = "New Staff"
+newStaff.price = 150
+newStaff.amount = 1
+newStaff.number = 15
+newStaff.desc = "A new staff."
+newStaff.staff = True
+
+newerStaff = InventoryAndShopItem()
+newerStaff.name = "Newer Staff"
+newerStaff.price = 200
+newerStaff.amount = 1
+newerStaff.number = 20
+newerStaff.desc = "A newer staff!"
+newerStaff.staff = True
+
+newestStaff = InventoryAndShopItem()
+newestStaff.name = "Newest Staff"
+newestStaff.price = 250
+newestStaff.amount = 1
+newestStaff.number = 25
+newestStaff.desc = "The newest staff !!"
+newestStaff.staff = True
+
 area1Items = [
     healthPotion, bomb
 ]
@@ -81,17 +123,17 @@ area3Items = [
 ]
 
 area4Items = [
-    healthPotion, manaPotion, bomb, repel, experiencePotion, newSword
+    healthPotion, manaPotion, bomb, repel, experiencePotion, newSword, newStaff
 ]
 
 area5Items = [
-    healthPotion, manaPotion, bomb, repel, experiencePotion, newerSword
+    healthPotion, manaPotion, bomb, repel, experiencePotion, newerSword, newerStaff
 ]
 
 area6to8Items = [
-    healthPotion, manaPotion, bomb, repel, experiencePotion, newestSword
+    healthPotion, manaPotion, bomb, repel, experiencePotion, newestSword, newestStaff
 ]
 
 allItems = [
-    healthPotion, manaPotion, bomb, repel, experiencePotion, newSword, newerSword, newestSword
+    healthPotion, manaPotion, bomb, repel, experiencePotion, newSword, newerSword, newestSword, newStaff, newerStaff, newestStaff
 ]

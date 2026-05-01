@@ -7,3 +7,4 @@ class Enemy:
 goblin = Enemy()
 goblin.maxHealth = 100
 goblin.damage = 30
+goblin.currentHealth = goblin.maxHealth

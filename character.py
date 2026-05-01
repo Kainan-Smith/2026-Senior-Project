@@ -78,6 +78,7 @@ warrior.spellAttackMod = 1 + (warrior.intelligence * 0.2)
 warrior.physicalAttackMod = 1 + (warrior.strength * 0.2)
 warrior.defenseMod = 1 - (warrior.endurance / 10)
 warrior.currentHealth = warrior.maxHealth
+warrior.currentMana = warrior.maxMana
 
 mage = Character()
 mage.vitality = 2
@@ -87,6 +88,14 @@ mage.intelligence = 5
 mage.strength = 1
 mage.endurance = 3
 mage.currentHealth = mage.maxHealth
+mage.maxHealth = 100 + (mage.vitality * 20)
+mage.maxMana = 100 + (mage.arcana * 20)
+mage.hitChance = 75 + (mage.accuracy * 5)
+mage.spellAttackMod = 1 + (mage.intelligence * 0.2)
+mage.physicalAttackMod = 1 + (mage.strength * 0.2)
+mage.defenseMod = 1 - (mage.endurance / 10)
+mage.currentHealth = mage.maxHealth
+mage.currentMana = mage.maxMana
 
 paladin = Character()
 paladin.vitality = 4
@@ -96,6 +105,14 @@ paladin.intelligence = 3
 paladin.strength = 3
 paladin.endurance = 4
 paladin.currentHealth = paladin.maxHealth
+paladin.maxHealth = 100 + (paladin.vitality * 20)
+paladin.maxMana = 100 + (paladin.arcana * 20)
+paladin.hitChance = 75 + (paladin.accuracy * 5)
+paladin.spellAttackMod = 1 + (paladin.intelligence * 0.2)
+paladin.physicalAttackMod = 1 + (paladin.strength * 0.2)
+paladin.defenseMod = 1 - (paladin.endurance / 10)
+paladin.currentHealth = paladin.maxHealth
+paladin.currentMana = paladin.maxMana
 
 def chooseCharacter(choice):
     if choice == "warrior":
@@ -108,6 +125,6 @@ def chooseCharacter(choice):
 
 #    playerChoice = input("Choose a character (Warrior, Mage, or Paladin):\n").lower()
 #    playerCharacter = chooseCharacter(playerChoice)
-hero = warrior
+hero = mage
 print(hero.currentHealth, hero.maxHealth)
 #   stats = check_modifiers(hero)
