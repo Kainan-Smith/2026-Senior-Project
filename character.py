@@ -9,6 +9,15 @@ class Character:
         self.intelligence = 0        # Intelligence - Affects Spell Attack Modifier
         self.strength = 0        # Strength - Affects Physical Attack Modifier
         self.endurance = 0        # Endurance - Affects Defense Modifier
+        self.maxHealth = 100
+        self.maxMana = 100
+        self.hitChance = 75
+        self.spellAttackMod = 1
+        self.physicalAttackMod = 1
+        self.defenseMod = 1
+        self.currentHealth = 100
+        self.currentMana = self.maxMana
+
 
 def LevelUp(char):
     points = 4
@@ -40,21 +49,12 @@ def LevelUp(char):
     return output
 
 def check_modifiers(char):
-    maxHealth = 100 + (char.vitality * 20)
-    maxMana = 100 + (char.arcana * 20)
-    hitChance = 75 + (char.accuracy * 5)
-    spellAttackModifier = 1 + (char.intelligence * 0.2)
-    physicalAttackModifier = 1 + (char.strength * 0.2)
-    defenseModifier = 1 - (char.endurance / 10)
-    modifiers = {
-        "Health": maxHealth,
-        "Mana": maxMana,
-        "Hit Chance": hitChance, 
-        "Spell Attack Mod.": spellAttackModifier,
-        "Physical Attack Mod.": physicalAttackModifier,
-        "Defense Mod.": defenseModifier
-        }
-    return modifiers
+    char.maxHealth = 100 + (char.vitality * 20)
+    char.maxMana = 100 + (char.arcana * 20)
+    char.hitChance = 75 + (char.accuracy * 5)
+    char.spellAttackModifier = 1 + (char.intelligence * 0.2)
+    char.physicalAttackModifier = 1 + (char.strength * 0.2)
+    char.defenseModifier = 1 - (char.endurance / 10)
 
 def print_modifiers(mods):
     print(f"Max Health: {mods["Health"]}")
@@ -71,6 +71,13 @@ warrior.accuracy = 3
 warrior.intelligence = 2
 warrior.strength = 5
 warrior.endurance = 4
+warrior.maxHealth = 100 + (warrior.vitality * 20)
+warrior.maxMana = 100 + (warrior.arcana * 20)
+warrior.hitChance = 75 + (warrior.accuracy * 5)
+warrior.spellAttackMod = 1 + (warrior.intelligence * 0.2)
+warrior.physicalAttackMod = 1 + (warrior.strength * 0.2)
+warrior.defenseMod = 1 - (warrior.endurance / 10)
+warrior.currentHealth = warrior.maxHealth
 
 mage = Character()
 mage.vitality = 2
@@ -79,6 +86,7 @@ mage.accuracy = 4
 mage.intelligence = 5
 mage.strength = 1
 mage.endurance = 3
+mage.currentHealth = mage.maxHealth
 
 paladin = Character()
 paladin.vitality = 4
@@ -87,6 +95,7 @@ paladin.accuracy = 3
 paladin.intelligence = 3
 paladin.strength = 3
 paladin.endurance = 4
+paladin.currentHealth = paladin.maxHealth
 
 def chooseCharacter(choice):
     if choice == "warrior":
@@ -99,5 +108,6 @@ def chooseCharacter(choice):
 
 #    playerChoice = input("Choose a character (Warrior, Mage, or Paladin):\n").lower()
 #    playerCharacter = chooseCharacter(playerChoice)
-playerCharacter = warrior
-stats = check_modifiers(playerCharacter)
+hero = warrior
+print(hero.currentHealth, hero.maxHealth)
+#   stats = check_modifiers(hero)

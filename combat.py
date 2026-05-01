@@ -1,32 +1,22 @@
 import character
 import items
 import inventory
+import enemy
 
-playerTotal = character.stats["Health"]
-playerHealth = playerTotal
-enemyTotal = 100
-enemyHealth = enemyTotal
-attack = character.stats["Physical Attack Mod."]
-spell = character.stats["Spell Attack Mod."]
-defense = character.stats["Defense Mod."]
-userAction = ""
-
-def displayHealth(total, current):
-    unit = total / 25
+def displayHealth(char):
+    unit = char.maxHealth / 25
     checking = 0
-    print(f"[{int(current)}/{total}]")
+    print(f"[{int(char.currentHealth)}/{char.maxHealth}]")
     print("[", end="")
-    while checking < total:
-        if checking <= current:
+    while checking < char.maxHealth:
+        if checking <= char.currentHealth:
             print("I", end="")
         else:
             print("-", end="")
         checking += unit
     print("]")
 
-def userTurn():
-    global defense
-    defense = character.stats["Defense Mod."]
+def userTurn(player, enemy):
     print("What will you do?")
     userAction = input(f"{"1. Attack":<12}{"2. Spell":<12}\n{"3. Guard":<12}{"4. Items"}\n").title()
     if userAction == "Attack" or userAction == "1":
@@ -34,36 +24,37 @@ def userTurn():
     elif userAction == "Spell" or userAction == "2":
         pass
     elif userAction == "Guard" or userAction == "3":
-        defense = guardFunction(defense)
+        player.defenseMod = guardFunction(player.defenseMod)
 
     elif userAction == "Items" or userAction == "4":
         pass
 
 def attackFunction(atkMod):
-    damage = (inventory.currentWeapon.number * attack)
+    damage = (inventory.currentWeapon.number * atkMod)
     return damage
 def spellFunction(psiMod):
-    spellDamage = (inventory.currentWeapon.number * spell)
+    spellDamage = (inventory.currentWeapon.number * psiMod)
     return spellDamage
 def guardFunction(defMod):
-    guarding = (defMod / 2)
-    return guarding
+    defMod /= 2
+    return defMod
 def items():
     pass
 
-def enemyTurn(player):
-    damage = int(30 * defense)
+def enemyTurn(enemy, player):
+    damage = int(enemy.damage * player.defenseMod)
     print("Enemy Attacks Player for", damage, "damage!")
     return damage
 
-def combatLoop(playerH, playerT, enemyH, enemyT):
-    global defense
-    while playerH > 0 and enemyH > 0:
+def combatLoop(player, enemy):
+    while player.currentHealth > 0 and enemy.currentHealth >= 0:
         print("Player: ", end="")
-        displayHealth(playerT, playerH)
+        displayHealth(player)
+        print(player.currentHealth, player.maxHealth)
         print("Enemy: ", end="")
-        displayHealth(enemyT, enemyH)
-        userTurn()
-        playerH -= enemyTurn(playerH)
+        displayHealth(enemy)
+        userTurn(player, enemy)
+        enemyTurn(enemy, player)
+        player.defenseMod = 1 - (player.endurance / 10)
 
-combatLoop(playerHealth, playerTotal, enemyHealth, enemyTotal)
+combatLoop(character.hero, enemy.goblin)
