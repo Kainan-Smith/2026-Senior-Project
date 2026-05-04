@@ -2,6 +2,7 @@ import inventory
 
 class Character:
     def __init__(self):
+        self.name = "Gort"
         self.level = 1      # I think you can infer what Level is
         self.vitality = 0        # Vitality - Affects Health
         self.arcana = 0        # Arcana - Affects Mana
@@ -126,5 +127,4 @@ def chooseCharacter(choice):
 #    playerChoice = input("Choose a character (Warrior, Mage, or Paladin):\n").lower()
 #    playerCharacter = chooseCharacter(playerChoice)
 hero = mage
-print(hero.currentHealth, hero.maxHealth)
 #   stats = check_modifiers(hero)

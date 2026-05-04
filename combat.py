@@ -48,19 +48,22 @@ def userTurn(player, enemy):
     print("What will you do?")
     userAction = input(f"{"1. Attack":<12}{"2. Spell":<12}\n{"3. Guard":<12}{"4. Items"}\n").title()
     if userAction == "Attack" or userAction == "1":
-        pass
+        attackFunction(player, enemy)
     elif userAction == "Spell" or userAction == "2":
         pass
     elif userAction == "Guard" or userAction == "3":
         player.defenseMod = guardFunction(player.defenseMod)
+        print("Blocking.")
     elif userAction == "Items" or userAction == "4":
         pass
 
-def attackFunction(atkMod):
-    damage = (inventory.currentWeapon.number * atkMod)
+def attackFunction(char, opp):
+    damage = int((inventory.currentWeapon.number * char.physicalAttackMod) * opp.defenseMod)
+    opp.currentHealth -= damage
+    print(char.name, "attacked", opp.name, "for", damage, "damage.")
     return damage
 def spellFunction(psiMod):
-    spellDamage = (inventory.currentWeapon.number * psiMod)
+    spellDamage = int(inventory.currentWeapon.number * psiMod)
     return spellDamage
 def guardFunction(defMod):
     defMod /= 2
@@ -69,16 +72,14 @@ def items():
     pass
 
 def enemyTurn(enemy, player):
-    damage = int(enemy.damage * player.defenseMod)
-    print("Enemy Attacks Player for", damage, "damage!")
-    player.currentHealth -= damage
+    attackFunction(enemy, player)
 
 def combatLoop(player, enemy):
     while player.currentHealth > 0 and enemy.currentHealth >= 0:
-        print("Player: ", end="")
+        print(f"{player.name}: ", end="")
         displayHealth(player)
         displayMana(player)
-        print("Enemy: ", end="")
+        print(f"{enemy.name}: ", end="")
         displayHealth(enemy)
         userTurn(player, enemy)
         enemyTurn(enemy, player)
