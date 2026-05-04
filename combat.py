@@ -9,12 +9,13 @@ character.hero.currentStaff = items.basicStaff
 def displayHealth(char):
     unit = char.maxHealth / 25
     checking = 0
+    count = 0
     yellow = "\x1b[33mI\x1b[0m"
     green = "\x1b[32mI\x1b[0m"
     red = "\x1b[31mI\x1b[0m"
     print(f"[{int(char.currentHealth)}/{char.maxHealth}]")
     print("[", end="")
-    while checking < char.maxHealth:
+    while count < 25:
         if checking <= char.currentHealth:
             if char.currentHealth <= char.maxHealth / 4:
                 print(red, end="")   # Health bar is yellow if 25-50%
@@ -25,19 +26,22 @@ def displayHealth(char):
         else:
             print("-", end="")
         checking += unit
+        count += 1
     print("]")
 
 def displayMana(char):
     unit = char.maxMana / 25
     checking = 0
+    count = 0
     print(f"[{int(char.currentMana)}/{char.maxMana}]")
     print("[", end="")
-    while checking <= char.maxMana:
+    while count < 25:
         if checking <= char.currentMana:
             print("\x1b[34mI\x1b[0m", end="")
         else:
             print("-", end="")
         checking += unit
+        count += 1
     print("]")
 
 def userTurn(player, enemy):
