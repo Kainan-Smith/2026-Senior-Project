@@ -3,6 +3,8 @@ import items
 import inventory
 import enemy
 
+import random
+
 character.hero.currentWeapon = items.basicSword
 character.hero.currentStaff = items.basicStaff
 
@@ -18,9 +20,9 @@ def displayHealth(char):
     while count < 25:
         if checking <= char.currentHealth:
             if char.currentHealth <= char.maxHealth / 4:
-                print(red, end="")   # Health bar is yellow if 25-50%
+                print(red, end="")      # Health bar is yellow if 25-50%
             elif char.currentHealth < char.maxHealth / 2:
-                print(yellow, end="")      # Health bar is red if 0-25%
+                print(yellow, end="")   # Health bar is red if 0-25%
             else:
                 print(green, end="")
         else:
@@ -58,6 +60,7 @@ def userTurn(player, enemy):
         pass
 
 def attackFunction(char, opp):
+    # TODO: Figure out what to do for enemy damage, unless you just want to give them regular items.  You may need to redo the Current Weapon mechanic
     damage = int((inventory.currentWeapon.number * char.physicalAttackMod) * opp.defenseMod)
     opp.currentHealth -= damage
     print(char.name, "attacked", opp.name, "for", damage, "damage.")
@@ -76,13 +79,15 @@ def enemyTurn(enemy, player):
 
 def combatLoop(player, enemy):
     while player.currentHealth > 0 and enemy.currentHealth >= 0:
+        enemy.frozen = False
         print(f"{player.name}: ", end="")
         displayHealth(player)
         displayMana(player)
         print(f"{enemy.name}: ", end="")
         displayHealth(enemy)
         userTurn(player, enemy)
-        enemyTurn(enemy, player)
+        if enemy.frozen == False:
+            enemyTurn(enemy, player)
         player.defenseMod = 1 - (player.endurance / 10)
 
 combatLoop(character.hero, enemy.goblin)

@@ -36,4 +36,3 @@ def displayInventory():
                     currentStaff = item
                     print(currentStaff.name)
                     staffChange = True
-

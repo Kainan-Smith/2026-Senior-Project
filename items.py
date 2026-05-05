@@ -4,9 +4,9 @@ class InventoryAndShopItem:
         self.name = ""      # The name of the item.
         self.price = 0      # The cost of the item in a shop.
         self.amount = 0     # The amount of the item sold in a shop.
-        self.held = 0       # The amount of the item the player is holding
+        self.held = 0       # The amount of the item the player is holding.
         self.number = 0     # The number associated with the item, either Attack Modifier, Defense Modifier, or Healing.
-        self.desc = ""      # A brief description of the item
+        self.desc = ""      # A brief description of the item.
         self.weapon = False
         self.staff = False
 
