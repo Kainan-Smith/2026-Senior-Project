@@ -1,7 +1,7 @@
 import character
 import items
 import inventory
-import enemy
+import evil
 
 import random
 
@@ -78,17 +78,19 @@ def enemyTurn(enemy, player):
     attackFunction(enemy, player)
 
 def combatLoop(player, enemy):
-    while player.currentHealth > 0 and enemy.currentHealth >= 0:
-        enemy.frozen = False
+    round = 1
+    while player.currentHealth > 0 and evil.currentHealth >= 0:
+        evil.frozen = False
         print(f"{player.name}: ", end="")
         displayHealth(player)
         displayMana(player)
-        print(f"{enemy.name}: ", end="")
+        print(f"{evil.name}: ", end="")
         displayHealth(enemy)
         userTurn(player, enemy)
-        if enemy.frozen == False:
+        if evil.frozen == False:
             enemyTurn(enemy, player)
         player.defenseMod = 1 - (player.endurance / 10)
+        round += 1
 
-combatLoop(character.hero, enemy.goblin)
+combatLoop(character.hero, evil.goblin)
 
