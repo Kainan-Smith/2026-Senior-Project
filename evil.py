@@ -8,7 +8,7 @@ class Enemy:
         self.baseDamage = 0
         self.physicalAttackMod = 1
         self.defenseMod = 1
-        self.frozen = False
+        self.condition = "None"
 
 goblin = Enemy()
 goblin.name = "Goblin"

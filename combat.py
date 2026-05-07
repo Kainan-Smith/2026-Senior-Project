@@ -2,6 +2,7 @@ import character
 import items
 import inventory
 import evil
+import spells
 
 import random
 
@@ -52,7 +53,7 @@ def userTurn(player, enemy):
     if userAction == "Attack" or userAction == "1":
         attackFunction(player, enemy)
     elif userAction == "Spell" or userAction == "2":
-        pass
+        spellFunction(player, enemy)
     elif userAction == "Guard" or userAction == "3":
         player.defenseMod = guardFunction(player.defenseMod)
         print("Blocking.")
@@ -65,9 +66,19 @@ def attackFunction(char, opp):
     opp.currentHealth -= damage
     print(char.name, "attacked", opp.name, "for", damage, "damage.")
     return damage
-def spellFunction(psiMod):
-    spellDamage = int(inventory.currentWeapon.number * psiMod)
-    return spellDamage
+
+def spellFunction(char, opp):
+    spellCast = False
+    while spellCast == False:
+        for item in spells.allSpells:
+            if item.known == True:
+                print(item.name)
+        playerChoice = input("Choose a spell:")
+        for item in spells.allSpells:
+            if playerChoice == item.name:
+                spellCast = True
+    
+
 def guardFunction(defMod):
     defMod /= 2
     return defMod
@@ -79,16 +90,14 @@ def enemyTurn(enemy, player):
 
 def combatLoop(player, enemy):
     round = 1
-    while player.currentHealth > 0 and evil.currentHealth >= 0:
-        evil.frozen = False
+    while player.currentHealth > 0 and enemy.currentHealth >= 0:
         print(f"{player.name}: ", end="")
         displayHealth(player)
         displayMana(player)
-        print(f"{evil.name}: ", end="")
+        print(f"{enemy.name}: ", end="")
         displayHealth(enemy)
         userTurn(player, enemy)
-        if evil.frozen == False:
-            enemyTurn(enemy, player)
+        enemyTurn(enemy, player)
         player.defenseMod = 1 - (player.endurance / 10)
         round += 1
 
