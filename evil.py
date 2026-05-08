@@ -11,7 +11,7 @@ class Enemy:
         self.condition = "None"
 
 goblin = Enemy()
-goblin.name = "Goblin"
+goblin.name = "Goplin"
 goblin.maxHealth = 100
 goblin.strength = 2
 goblin.endurance = 2

@@ -126,5 +126,5 @@ def chooseCharacter(choice):
 
 #    playerChoice = input("Choose a character (Warrior, Mage, or Paladin):\n").lower()
 #    playerCharacter = chooseCharacter(playerChoice)
-hero = mage
+hero = warrior
 #   stats = check_modifiers(hero)

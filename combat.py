@@ -4,6 +4,7 @@ import inventory
 import evil
 import spells
 
+from colorama import Back
 import random
 
 character.hero.currentWeapon = items.basicSword
@@ -13,9 +14,9 @@ def displayHealth(char):
     unit = char.maxHealth / 25
     checking = 0
     count = 0
-    yellow = "\x1b[33mI\x1b[0m"
-    green = "\x1b[32mI\x1b[0m"
-    red = "\x1b[31mI\x1b[0m"
+    yellow = Back.YELLOW + " "
+    green = Back.GREEN + " "
+    red = Back.RED + " "
     print(f"[{int(char.currentHealth)}/{char.maxHealth}]")
     print("[", end="")
     while count < 25:
@@ -27,10 +28,10 @@ def displayHealth(char):
             else:
                 print(green, end="")
         else:
-            print("-", end="")
+            print(Back.RESET + " ", end="")
         checking += unit
         count += 1
-    print("]")
+    print(Back.RESET + "]")
 
 def displayMana(char):
     unit = char.maxMana / 25
@@ -40,12 +41,12 @@ def displayMana(char):
     print("[", end="")
     while count < 25:
         if checking <= char.currentMana:
-            print("\x1b[34mI\x1b[0m", end="")
+            print(Back.BLUE + " ", end="")
         else:
-            print("-", end="")
+            print(Back.RESET + " ", end="")
         checking += unit
         count += 1
-    print("]")
+    print(Back.RESET + "]")
 
 def userTurn(player, enemy):
     print("What will you do?")
@@ -65,25 +66,29 @@ def attackFunction(char, opp):
     damage = int((inventory.currentWeapon.number * char.physicalAttackMod) * opp.defenseMod)
     opp.currentHealth -= damage
     print(char.name, "attacked", opp.name, "for", damage, "damage.")
-    return damage
 
 def spellFunction(char, opp):
+    # This first code block is just for choosing a spell
     spellCast = False
     while spellCast == False:
         for item in spells.allSpells:
             if item.known == True:
                 print(item.name)
-        playerChoice = input("Choose a spell:")
+        playerChoice = input("Choose a spell: ").title()
         for item in spells.allSpells:
             if playerChoice == item.name:
+                spell = item
                 spellCast = True
+    char.currentMana -= spell.manaCost
+    damage = int(((spell.number * char.spellAttackMod) * inventory.currentStaff.number) * opp.defenseMod)
+    opp.currentHealth -= damage
+    print(char.name, "casted", spell.name, "on", opp.name, "for", damage, "damage.")
+
     
 
 def guardFunction(defMod):
     defMod /= 2
     return defMod
-def items():
-    pass
 
 def enemyTurn(enemy, player):
     attackFunction(enemy, player)

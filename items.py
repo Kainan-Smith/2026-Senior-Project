@@ -82,7 +82,7 @@ basicStaff = InventoryAndShopItem()
 basicStaff.name = "Basic Staff"
 basicStaff.held = 1
 basicStaff.amount = 1
-basicStaff.number = 10
+basicStaff.number = 1
 basicStaff.desc = "A basic staff..."
 basicStaff.staff = True
 
@@ -90,7 +90,7 @@ newStaff = InventoryAndShopItem()
 newStaff.name = "New Staff"
 newStaff.price = 150
 newStaff.amount = 1
-newStaff.number = 15
+newStaff.number = 1.25
 newStaff.desc = "A new staff."
 newStaff.staff = True
 
@@ -98,7 +98,7 @@ newerStaff = InventoryAndShopItem()
 newerStaff.name = "Newer Staff"
 newerStaff.price = 200
 newerStaff.amount = 1
-newerStaff.number = 20
+newerStaff.number = 1.5
 newerStaff.desc = "A newer staff!"
 newerStaff.staff = True
 
@@ -106,7 +106,7 @@ newestStaff = InventoryAndShopItem()
 newestStaff.name = "Newest Staff"
 newestStaff.price = 250
 newestStaff.amount = 1
-newestStaff.number = 25
+newestStaff.number = 2
 newestStaff.desc = "The newest staff !!"
 newestStaff.staff = True
 
