@@ -48,18 +48,20 @@ def displayMana(char):
         count += 1
     print(Back.RESET + "]")
 
-def userTurn(player, enemy):
+def userTurn(round, player, enemy, conEnds):
     print("What will you do?")
     userAction = input(f"{"1. Attack":<12}{"2. Spell":<12}\n{"3. Guard":<12}").title()
+    spell = None
     if userAction == "Attack" or userAction == "1":
         attackFunction(player, enemy)
     elif userAction == "Spell" or userAction == "2":
-        spellFunction(player, enemy)
+        spell, conEnds = spellFunction(round, player, enemy, conEnds)
     elif userAction == "Guard" or userAction == "3":
         player.defenseMod = guardFunction(player.defenseMod)
         print("Blocking.")
     elif userAction == "Items" or userAction == "4":
         pass
+    return spell, conEnds
 
 def attackFunction(char, opp):
     # TODO: Figure out what to do for enemy damage, unless you just want to give them regular items.  You may need to redo the Current Weapon mechanic
@@ -67,7 +69,7 @@ def attackFunction(char, opp):
     opp.currentHealth -= damage
     print(char.name, "attacked", opp.name, "for", damage, "damage.")
 
-def spellFunction(char, opp):
+def spellFunction(round, char, opp, conEnds):
     # This first code block is just for choosing a spell
     spellCast = False
     while spellCast == False:
@@ -83,26 +85,39 @@ def spellFunction(char, opp):
     damage = int(((spell.number * char.spellAttackMod) * inventory.currentStaff.number) * opp.defenseMod)
     opp.currentHealth -= damage
     print(char.name, "casted", spell.name, "on", opp.name, "for", damage, "damage.")
+    randomNumber = random.randint(1, 100)
+    if randomNumber <= spell.chance:
+        opp.condition = spell.condition
+        conEnds = round + spell.lasts + 1
+    return spell, conEnds
 
-    
 
 def guardFunction(defMod):
     defMod /= 2
     return defMod
 
-def enemyTurn(enemy, player):
+def enemyTurn(round, enemy, player, conEnds, spell):
     attackFunction(enemy, player)
+    if round == conEnds:
+        enemy.condition = None
+    if enemy.condition == "Frozen":
+        pass
+    elif enemy.condition == "Burned":
+        enemy.currentHealth -= spell.damage
+    return enemy.condition
 
 def combatLoop(player, enemy):
     round = 1
-    while player.currentHealth > 0 and enemy.currentHealth >= 0:
+    conditionEnds = None
+    while player.currentHealth > 0 and enemy.currentHealth > 0:
         print(f"{player.name}: ", end="")
         displayHealth(player)
         displayMana(player)
         print(f"{enemy.name}: ", end="")
         displayHealth(enemy)
-        userTurn(player, enemy)
-        enemyTurn(enemy, player)
+        spell, conditionEnds = userTurn(round, player, enemy, conditionEnds)
+        enemy.condition = enemyTurn(round, enemy, player, conditionEnds, spell)
+        print(enemy.condition, round, conditionEnds)
         player.defenseMod = 1 - (player.endurance / 10)
         round += 1
 
