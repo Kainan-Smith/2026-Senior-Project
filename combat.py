@@ -49,7 +49,7 @@ def displayMana(char):
 
 def userTurn(player, enemy):
     print("What will you do?")
-    userAction = input(f"{"1. Attack":<12}{"2. Spell":<12}\n{"3. Guard":<12}{"4. Items"}\n").title()
+    userAction = input(f"{"1. Attack":<12}{"2. Spell":<12}\n{"3. Guard":<12}").title()
     if userAction == "Attack" or userAction == "1":
         attackFunction(player, enemy)
     elif userAction == "Spell" or userAction == "2":
