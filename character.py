@@ -1,23 +1,23 @@
-import inventory
+import items
 
 class Character:
     def __init__(self):
         self.name = "Gort"
-        self.level = 1      # I think you can infer what Level is
-        self.vitality = 0        # Vitality - Affects Health
-        self.arcana = 0        # Arcana - Affects Mana
-        self.accuracy = 0        # Accuracy - Affects Hit Chance
-        self.intelligence = 0        # Intelligence - Affects Spell Attack Modifier
-        self.strength = 0        # Strength - Affects Physical Attack Modifier
-        self.endurance = 0        # Endurance - Affects Defense Modifier
+        self.level = 1          # I think you can infer what Level is
+        self.vitality = 0       # Vitality - Affects Health
+        self.arcana = 0         # Arcana - Affects Mana
+        self.accuracy = 0       # Accuracy - Affects Hit Chance
+        self.intelligence = 0   # Intelligence - Affects Spell Attack Modifier
+        self.strength = 0       # Strength - Affects Physical Attack Modifier
+        self.endurance = 0      # Endurance - Affects Defense Modifier
         self.maxHealth = 100
         self.maxMana = 100
-        self.hitChance = 75
-        self.spellAttackMod = 1
+        self.spellMod = 1
         self.physicalAttackMod = 1
         self.defenseMod = 1
         self.currentHealth = 100
-        self.currentMana = self.maxMana
+        self.currentWeapon = items.basicSword
+        self.currentStaff = items.basicStaff
 
 
 def LevelUp(char):
@@ -53,7 +53,7 @@ def check_modifiers(char):
     char.maxHealth = 100 + (char.vitality * 20)
     char.maxMana = 100 + (char.arcana * 20)
     char.hitChance = 75 + (char.accuracy * 5)
-    char.spellAttackModifier = 1 + (char.intelligence * 0.2)
+    char.spellModifier = 1 + (char.intelligence * 0.2)
     char.physicalAttackModifier = 1 + (char.strength * 0.2)
     char.defenseModifier = 1 - (char.endurance / 10)
 
@@ -75,7 +75,7 @@ warrior.endurance = 4
 warrior.maxHealth = 100 + (warrior.vitality * 20)
 warrior.maxMana = 100 + (warrior.arcana * 20)
 warrior.hitChance = 75 + (warrior.accuracy * 5)
-warrior.spellAttackMod = 1 + (warrior.intelligence * 0.2)
+warrior.spellMod = 1 + (warrior.intelligence * 0.2)
 warrior.physicalAttackMod = 1 + (warrior.strength * 0.2)
 warrior.defenseMod = 1 - (warrior.endurance / 10)
 warrior.currentHealth = warrior.maxHealth
@@ -92,7 +92,7 @@ mage.currentHealth = mage.maxHealth
 mage.maxHealth = 100 + (mage.vitality * 20)
 mage.maxMana = 100 + (mage.arcana * 20)
 mage.hitChance = 75 + (mage.accuracy * 5)
-mage.spellAttackMod = 1 + (mage.intelligence * 0.2)
+mage.spellMod = 1 + (mage.intelligence * 0.2)
 mage.physicalAttackMod = 1 + (mage.strength * 0.2)
 mage.defenseMod = 1 - (mage.endurance / 10)
 mage.currentHealth = mage.maxHealth
@@ -109,7 +109,7 @@ paladin.currentHealth = paladin.maxHealth
 paladin.maxHealth = 100 + (paladin.vitality * 20)
 paladin.maxMana = 100 + (paladin.arcana * 20)
 paladin.hitChance = 75 + (paladin.accuracy * 5)
-paladin.spellAttackMod = 1 + (paladin.intelligence * 0.2)
+paladin.spellMod = 1 + (paladin.intelligence * 0.2)
 paladin.physicalAttackMod = 1 + (paladin.strength * 0.2)
 paladin.defenseMod = 1 - (paladin.endurance / 10)
 paladin.currentHealth = paladin.maxHealth

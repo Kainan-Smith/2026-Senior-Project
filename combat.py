@@ -1,14 +1,9 @@
 import character
-import items
-import inventory
 import evil
 import spells
 
 from colorama import Back
 import random
-
-character.hero.currentWeapon = items.basicSword
-character.hero.currentStaff = items.basicStaff
 
 def displayHealth(char):
     unit = char.maxHealth / 25
@@ -65,7 +60,7 @@ def userTurn(round, player, enemy, conEnds):
 
 def attackFunction(char, opp):
     # TODO: Figure out what to do for enemy damage, unless you just want to give them regular items.  You may need to redo the Current Weapon mechanic
-    damage = int((inventory.currentWeapon.number * char.physicalAttackMod) * opp.defenseMod)
+    damage = int((char.currentWeapon.number * char.physicalAttackMod) * opp.defenseMod)
     opp.currentHealth -= damage
     print(char.name, "attacked", opp.name, "for", damage, "damage.")
 
@@ -78,20 +73,27 @@ def spellFunction(round, char, opp, conEnds):
                 print(item.name)
         playerChoice = input("Choose a spell: ").title()
         for item in spells.allSpells:
-            if playerChoice == item.name:
+            if playerChoice == item.name and item.known == True:
                 spell = item
                 spellCast = True
     char.currentMana -= spell.manaCost
-    damage = int(((spell.number * char.spellAttackMod) * inventory.currentStaff.number) * opp.defenseMod)
-    opp.currentHealth -= damage
-    print(char.name, "casted", spell.name, "on", opp.name, "for", damage, "damage.")
-    randomNumber = random.randint(1, 100)
-    if randomNumber <= spell.chance:
-        opp.condition = spell.condition
-        conEnds = round + spell.lasts + 1
+    if spell.healing == True:
+        healing = int((spell.number * char.spellMod) * char.currentStaff.number)
+        char.currentHealth += healing
+        print(char.name, "casted", spell.name, "and healed for", healing, "HP.")
+    if spell.damage == True:
+        damage = int(((spell.number * char.spellMod) * char.currentStaff.number) * opp.defenseMod)
+        randomNumber = random.randint(1, 100)
+        if randomNumber <= spell.chance:
+            opp.condition = spell.condition
+            conEnds = round + spell.lasts + 1
+            if spell.condition == "Crit":
+                damage += damage
+        opp.currentHealth -= damage
+        print(char.name, "casted", spell.name, "on", opp.name, "for", damage, "damage.")
     return spell, conEnds
 
-
+# TODO: Change Guard Action to Potion Action
 def guardFunction(defMod):
     defMod /= 2
     return defMod

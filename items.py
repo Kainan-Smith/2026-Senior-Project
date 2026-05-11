@@ -20,6 +20,7 @@ healthPotion.desc = f"Heals {healthPotion.number} HP."
 
 manaPotion = InventoryAndShopItem()
 manaPotion.name = "Mana Potion"
+manaPotion.held = 1
 manaPotion.price = 25
 manaPotion.amount = 5
 manaPotion.number = 20
@@ -135,5 +136,9 @@ area6to8Items = [
 ]
 
 allItems = [
-    healthPotion, manaPotion, bomb, repel, experiencePotion, newSword, newerSword, newestSword, newStaff, newerStaff, newestStaff
+    healthPotion, manaPotion, bomb, repel, experiencePotion
+]
+
+weaponsAndStaffs = [
+    newSword, newerSword, newestSword, newStaff, newerStaff, newestStaff
 ]

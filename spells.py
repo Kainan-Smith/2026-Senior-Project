@@ -10,13 +10,13 @@ class Spell:
         self.chance = 0             # If the spell has a random chance to have an effect, this value will be used as a %.
         self.lasts = 0              # How long does the spell last?
         self.condition = "None"
-        # TODO: Experiment with a self.lasts variable that allows you to make spells that last multiple rounds.
 
 heal1 = Spell()
 heal1.name = "Minor Heal"
 heal1.desc = "A basic healing spell."
 heal1.manaCost = 10
 heal1.number = 25
+heal1.known = True
 heal1.healing = True
 
 heal2 = Spell()
@@ -33,7 +33,6 @@ heal3.manaCost = 40
 heal3.number = 100
 heal3.healing = True
 
-# TODO: Change spell chances from 20-50 to 60-100
 freeze1 = Spell()
 freeze1.name = "Frost"
 freeze1.desc = "Deals a small amount of damage and has a 60% chance to freeze enemies."
@@ -41,6 +40,7 @@ freeze1.manaCost = 10
 freeze1.number = 20
 freeze1.damage = True
 freeze1.chance = 60
+freeze1.known = True
 freeze1.condition = "Frozen"
 
 freeze2 = Spell()
@@ -68,6 +68,7 @@ burn1.manaCost = 10
 burn1.number = 20
 burn1.damage = True
 burn1.chance = 60
+burn1.known = True
 burn1.condition = "Burned"
 
 burn2 = Spell()
@@ -94,8 +95,9 @@ lightning1.desc = "Deals a large amount of damage, small chance to crit."
 lightning1.manaCost = 10
 lightning1.number = 30 # Was changed from 40 for testing
 lightning1.damage = True
-lightning1.chance = 10
+lightning1.chance = 100
 lightning1.known = True
+lightning1.condition = "Crit"
 
 lightning2 = Spell()
 lightning2.name = "Lightning Bolt"
@@ -103,8 +105,8 @@ lightning2.desc = "Deals a large amount of damage, small chance to crit."
 lightning2.manaCost = 20
 lightning2.number = 80
 lightning2.damage = True
-lightning2.change = 20
-
+lightning2.chance = 20
+lightning2.condition = "Crit"
 
 lightning3 = Spell()
 lightning3.name = "Stormcloud"
@@ -112,7 +114,8 @@ lightning3.desc = "Deals a large amount of damage, small chance to crit."
 lightning3.manaCost = 30
 lightning3.number = 120
 lightning3.damage = True
-lightning3.count = 30
+lightning3.chance = 30
+lightning3.condition = "Crit"
 
 # TODO: Think about adding earth spells
 
