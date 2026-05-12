@@ -51,7 +51,7 @@ basicSword = InventoryAndShopItem()
 basicSword.name = "Basic Sword"
 basicSword.held = 1
 basicSword.amount = 1
-basicSword.number = 10
+basicSword.number = 15
 basicSword.desc = "A basic sword..."
 basicSword.weapon = True
 
@@ -59,7 +59,7 @@ newSword = InventoryAndShopItem()
 newSword.name = "New Sword"
 newSword.price = 150
 newSword.amount = 1
-newSword.number = 15
+newSword.number = 20
 newSword.desc = "A new sword."
 newSword.weapon = True
 
@@ -67,7 +67,7 @@ newerSword = InventoryAndShopItem()
 newerSword.name = "Newer Sword"
 newerSword.price = 200
 newerSword.amount = 1
-newerSword.number = 20
+newerSword.number = 40
 newerSword.desc = "A newer sword!"
 newerSword.weapon = True
 
@@ -75,7 +75,7 @@ newestSword = InventoryAndShopItem()
 newestSword.name = "Newest Sword"
 newestSword.price = 250
 newestSword.amount = 1
-newestSword.number = 25
+newestSword.number = 80
 newestSword.desc = "The newest sword !!"
 newestSword.weapon = True
 

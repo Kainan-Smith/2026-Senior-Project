@@ -12,8 +12,12 @@ def displayHealth(char):
     yellow = Back.YELLOW + " "
     green = Back.GREEN + " "
     red = Back.RED + " "
-    print(f"[{int(char.currentHealth)}/{char.maxHealth}]")
-    print("[", end="")
+    print(f"[{int(char.currentHealth)}/{char.maxHealth}]", end="")
+    if char.condition != None:
+        print(f" ({char.condition})")
+        print("[", end="")
+    else:
+        print("\n[", end="")
     while count < 25:
         if checking <= char.currentHealth:
             if char.currentHealth <= char.maxHealth / 4:
@@ -99,13 +103,13 @@ def guardFunction(defMod):
     return defMod
 
 def enemyTurn(round, enemy, player, conEnds, spell):
-    attackFunction(enemy, player)
     if round == conEnds:
         enemy.condition = None
     if enemy.condition == "Frozen":
         pass
     elif enemy.condition == "Burned":
         enemy.currentHealth -= spell.damage
+    attackFunction(enemy, player)
     return enemy.condition
 
 def combatLoop(player, enemy):

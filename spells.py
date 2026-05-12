@@ -35,7 +35,7 @@ heal3.healing = True
 
 freeze1 = Spell()
 freeze1.name = "Frost"
-freeze1.desc = "Deals a small amount of damage and has a 60% chance to freeze enemies."
+freeze1.desc = "Deals a small amount of damage, 60% chance to freeze enemies."
 freeze1.manaCost = 10
 freeze1.number = 20
 freeze1.damage = True
@@ -45,7 +45,7 @@ freeze1.condition = "Frozen"
 
 freeze2 = Spell()
 freeze2.name = "Icicle"
-freeze2.desc = "Deals a small amount of damage and has a 80% chance to freeze enemies."
+freeze2.desc = "Deals a medium amount of damage, 80% chance to freeze enemies."
 freeze2.manaCost = 20
 freeze2.number = 40
 freeze2.damage = True
@@ -54,16 +54,16 @@ freeze2.condition = "Frozen"
 
 freeze3 = Spell()
 freeze3.name = "Glacier"
-freeze3.desc = "Deals a small amount of damage and has a 100% chance to freeze enemies."
+freeze3.desc = "Deals a large amount of damage, 100% chance to freeze enemies."
 freeze3.manaCost = 30
-freeze3.number = 60
+freeze3.number = 80
 freeze3.damage = True
 freeze3.chance = 100
 freeze3.condition = "Frozen"
 
 burn1 = Spell()
 burn1.name = "Kindle"
-burn1.desc = "Deals a small amount of damage and has a 60% chance to burn enemies."
+burn1.desc = "Deals a small amount of damage, 60% chance to burn enemies."
 burn1.manaCost = 10
 burn1.number = 20
 burn1.damage = True
@@ -73,7 +73,7 @@ burn1.condition = "Burned"
 
 burn2 = Spell()
 burn2.name = "Blaze"
-burn2.desc = "Deals a small amount of damage and has a 80% chance to burn enemies."
+burn2.desc = "Deals a medium amount of damage, 80% chance to burn enemies."
 burn2.manaCost = 20
 burn2.number = 40
 burn2.damage = True
@@ -82,28 +82,28 @@ burn2.condition = "Burned"
 
 burn3 = Spell()
 burn3.name = "Inferno"
-burn3.desc = "Deals a small amount of damage and has a 100% chance to burn enemies."
+burn3.desc = "Deals a large amount of damage, 100% chance to burn enemies."
 burn3.manaCost = 30
-burn3.number = 60
+burn3.number = 80
 burn3.damage = True
 burn3.chance = 100
 burn3.condition = "Burned"
 
 lightning1 = Spell()
 lightning1.name = "Thunder"
-lightning1.desc = "Deals a large amount of damage, small chance to crit."
+lightning1.desc = "Deals a small amount of damage, small chance to crit."
 lightning1.manaCost = 10
-lightning1.number = 30 # Was changed from 40 for testing
+lightning1.number = 20
 lightning1.damage = True
-lightning1.chance = 100
+lightning1.chance = 10
 lightning1.known = True
 lightning1.condition = "Crit"
 
 lightning2 = Spell()
 lightning2.name = "Lightning Bolt"
-lightning2.desc = "Deals a large amount of damage, small chance to crit."
+lightning2.desc = "Deals a medium amount of damage, small chance to crit."
 lightning2.manaCost = 20
-lightning2.number = 80
+lightning2.number = 40
 lightning2.damage = True
 lightning2.chance = 20
 lightning2.condition = "Crit"
@@ -112,16 +112,39 @@ lightning3 = Spell()
 lightning3.name = "Stormcloud"
 lightning3.desc = "Deals a large amount of damage, small chance to crit."
 lightning3.manaCost = 30
-lightning3.number = 120
+lightning3.number = 80
 lightning3.damage = True
 lightning3.chance = 30
 lightning3.condition = "Crit"
 
-# TODO: Think about adding earth spells
+rock1 = Spell()
+rock1.name = "Crystal Shard"
+rock1.desc = "Deals a minor amount of damage."
+rock1.manaCost = 10
+rock1.number = 30
+rock1.damage = True
+rock1.known = True
+
+rock2 = Spell()
+rock2.name = "Jade Cluster"
+rock2.desc = "Deals a moderate amount of damage."
+rock2.manaCost = 20
+rock2.number = 60
+rock2.damage = True
+
+rock3 = Spell()
+rock3.name = "Obsidian Spike"
+rock3.desc = "Deals a major amount of damage"
+rock3.manaCost = 30
+rock3.number = 120
+rock3.damage = True
+
+# TODO: Think about adding rock spells
 
 allSpells = [
     heal1, heal2, heal3,
     freeze1, freeze2, freeze3,
     burn1, burn2, burn3,
-    lightning1, lightning2, lightning3
+    lightning1, lightning2, lightning3,
+    rock1, rock2, rock3
 ]

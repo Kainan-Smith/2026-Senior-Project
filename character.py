@@ -16,8 +16,9 @@ class Character:
         self.physicalAttackMod = 1
         self.defenseMod = 1
         self.currentHealth = 100
-        self.currentWeapon = items.basicSword
+        self.currentWeapon = items.newSword
         self.currentStaff = items.basicStaff
+        self.condition = None
 
 
 def LevelUp(char):
@@ -126,5 +127,6 @@ def chooseCharacter(choice):
 
 #    playerChoice = input("Choose a character (Warrior, Mage, or Paladin):\n").lower()
 #    playerCharacter = chooseCharacter(playerChoice)
-hero = warrior
+hero = mage
 #   stats = check_modifiers(hero)
+check_modifiers(hero)

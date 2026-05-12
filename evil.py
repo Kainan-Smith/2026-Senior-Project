@@ -10,12 +10,12 @@ class Enemy:
         self.baseDamage = 0
         self.physicalAttackMod = 1
         self.defenseMod = 1
-        self.condition = "None"
+        self.condition = None
         self.currentWeapon = items.basicSword
 
 goblin = Enemy()
 goblin.name = "Goplin"
-goblin.maxHealth = 1000
+goblin.maxHealth = 400
 goblin.strength = 2
 goblin.endurance = 2
 goblin.baseDamage = 10
