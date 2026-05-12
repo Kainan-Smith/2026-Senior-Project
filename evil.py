@@ -15,16 +15,14 @@ class Enemy:
 
 testDummy = Enemy()
 testDummy.name = "Test Dummy"
-testDummy.maxHealh = 500
-testDummy.physicalAttackMod = 1
-testDummy.defenseMod = 1
+testDummy.maxHealth = 200
+testDummy.currentHealth = testDummy.maxHealth
 
 goblin = Enemy()
 goblin.name = "Goplin"
 goblin.maxHealth = 400
 goblin.strength = 2
 goblin.endurance = 0
-goblin.baseDamage = 10
 goblin.physicalAttackMod = 1 + (goblin.strength * 0.2)
 goblin.defenseMod = 1 - (goblin.endurance / 10)
 goblin.currentHealth = goblin.maxHealth

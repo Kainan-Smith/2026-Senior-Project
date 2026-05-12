@@ -129,4 +129,3 @@ def combatLoop(player, enemy):
         round += 1
 
 combatLoop(character.hero, evil.testDummy)
-
