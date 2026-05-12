@@ -65,6 +65,7 @@ def userTurn(round, player, enemy, conEnds):
 def attackFunction(char, opp):
     # TODO: Figure out what to do for enemy damage, unless you just want to give them regular items.  You may need to redo the Current Weapon mechanic
     damage = int((char.currentWeapon.number * char.physicalAttackMod) * opp.defenseMod)
+    print(f"Base Damage: {char.currentWeapon.number}, Attack Mod: {char.physicalAttackMod}, Defense Mod: {opp.defenseMod}")
     opp.currentHealth -= damage
     print(char.name, "attacked", opp.name, "for", damage, "damage.")
 
@@ -127,5 +128,5 @@ def combatLoop(player, enemy):
         player.defenseMod = 1 - (player.endurance / 10)
         round += 1
 
-combatLoop(character.hero, evil.goblin)
+combatLoop(character.hero, evil.testDummy)
 

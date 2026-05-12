@@ -129,4 +129,3 @@ def chooseCharacter(choice):
 #    playerCharacter = chooseCharacter(playerChoice)
 hero = mage
 #   stats = check_modifiers(hero)
-check_modifiers(hero)
