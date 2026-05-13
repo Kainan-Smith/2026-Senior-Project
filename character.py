@@ -3,9 +3,10 @@ import items
 class Character:
     def __init__(self):
         self.name = "Gort"
-        self.level = 1          # I think you can infer what Level is
         self.currentXp = 0
         self.nextLevelXp = 100
+        self.money = 0
+        self.level = 1          # I think you can infer what Level is
         self.vitality = 0       # Vitality - Affects Health
         self.arcana = 0         # Arcana - Affects Mana
         self.accuracy = 0       # Accuracy - Affects Hit Chance

@@ -1,7 +1,6 @@
 import items
 import character
 
-money = 500
 
 def updateWeapon(char):
     for item in items.weaponsAndStaffs:
@@ -18,8 +17,8 @@ def displayInventory(char):
     for item in items.allItems:
         if item.held > 0:
             print(f"{item.name :<20}{item.held :<8}{'|' :<8}{item.desc :<32}")
-    global money
-    print(f"Money: {money}")
+    char.money
+    print(f"Money: {char.money}")
     updateWeapon(char)
     print(f"Current Weapon: {char.currentWeapon.name}")
     print(f"Current Staff: {char.currentStaff.name}")

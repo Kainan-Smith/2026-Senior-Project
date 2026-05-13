@@ -19,6 +19,7 @@ testDummy = Enemy()
 testDummy.name = "Test Dummy"
 testDummy.maxHealth = 200
 testDummy.currentHealth = testDummy.maxHealth
+testDummy.xpGiven = 50
 
 goblin = Enemy()
 goblin.name = "Goplin"

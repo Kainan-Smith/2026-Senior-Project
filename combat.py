@@ -49,22 +49,21 @@ def displayMana(char):
 
 def userTurn(round, player, enemy, conEnds):
     print("What will you do?")
-    userAction = input(f"{"1. Attack":<12}{"2. Spell":<12}\n{"3. Guard":<12}").title()
-    spell = None
-    if userAction == "Attack" or userAction == "1":
-        attackFunction(player, enemy)
-    elif userAction == "Spell" or userAction == "2":
-        spell, conEnds = spellFunction(round, player, enemy, conEnds)
-    elif userAction == "Guard" or userAction == "3":
-        player.defenseMod = guardFunction(player.defenseMod)
-        print("Blocking.")
-    elif userAction == "Items" or userAction == "4":
-        pass
+    actionDone = False
+    while actionDone == False:
+        userAction = input(f"{"1. Attack":<12}{"2. Spell":<12}").title()
+        spell = None
+        if userAction == "Attack" or userAction == "1":
+            attackFunction(player, enemy)
+        elif userAction == "Spell" or userAction == "2":
+            spell, conEnds = spellFunction(round, player, enemy, conEnds)
+        else:
+            continue
+        actionDone = True
     return spell, conEnds
 
 def attackFunction(char, opp):
     damage = int((char.currentWeapon.number * char.attackMod) * opp.defenseMod)
-    print(f"Base Damage: {char.currentWeapon.number}, Attack Mod: {char.attackMod}, Defense Mod: {opp.defenseMod}")
     opp.currentHealth -= damage
     print(char.name, "attacked", opp.name, "for", damage, "damage.")
 
@@ -93,6 +92,9 @@ def spellFunction(round, char, opp, conEnds):
             conEnds = round + spell.lasts + 1
             if spell.condition == "Crit":
                 damage += damage
+                opp.currentHealth -= damage
+                print(char.name, "casted", spell.name, "on", opp.name, "for", damage, "damage.      (It's a Crit!)")
+                return spell,conEnds
         opp.currentHealth -= damage
         print(char.name, "casted", spell.name, "on", opp.name, "for", damage, "damage.")
     return spell, conEnds
@@ -121,5 +123,9 @@ def combatLoop(player, enemy):
         print(enemy.condition, round, conditionEnds)
         player.defenseMod = 1 - (player.endurance / 10)
         round += 1
+    player.currentXp += enemy.xpGiven
+    player.money 
+    print(f"{player.currentXp}/{player.nextLevelXp}")
+    print(f"{player.money}")
 
 combatLoop(character.hero, evil.testDummy)
