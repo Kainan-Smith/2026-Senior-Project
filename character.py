@@ -4,6 +4,8 @@ class Character:
     def __init__(self):
         self.name = "Gort"
         self.level = 1          # I think you can infer what Level is
+        self.currentXp = 0
+        self.nextLevelXp = 100
         self.vitality = 0       # Vitality - Affects Health
         self.arcana = 0         # Arcana - Affects Mana
         self.accuracy = 0       # Accuracy - Affects Hit Chance
@@ -13,7 +15,7 @@ class Character:
         self.maxHealth = 100
         self.maxMana = 100
         self.spellMod = 1
-        self.physicalAttackMod = 1
+        self.attackMod = 1
         self.defenseMod = 1
         self.currentHealth = 100
         self.currentWeapon = items.newSword
@@ -53,9 +55,9 @@ def LevelUp(char):
 def check_modifiers(char):
     char.maxHealth = 100 + (char.vitality * 20)
     char.maxMana = 100 + (char.arcana * 20)
-    char.spellModifier = 1 + (char.intelligence * 0.2)
-    char.physicalAttackModifier = 1 + (char.strength * 0.2)
-    char.defenseModifier = 1 - (char.endurance / 10)
+    char.spellMod = 1 + (char.intelligence * 0.2)
+    char.attackMod = 1 + (char.strength * 0.2)
+    char.defenseMod = 1 - (char.endurance / 10)
 
 def print_modifiers(mods):
     print(f"Max Health: {mods["Health"]}")
@@ -75,6 +77,9 @@ warrior.maxHealth = 100 + (warrior.vitality * 20)
 warrior.maxMana = 100 + (warrior.arcana * 20)
 warrior.currentHealth = warrior.maxHealth
 warrior.currentMana = warrior.maxMana
+warrior.spellMod = 1 + (warrior.intelligence * 0.2)
+warrior.attackMod = 1 + (warrior.strength * 0.2)
+warrior.defenseMod = 1 - (warrior.endurance / 10)
 
 mage = Character()
 mage.vitality = 2
@@ -87,6 +92,9 @@ mage.maxHealth = 100 + (mage.vitality * 20)
 mage.maxMana = 100 + (mage.arcana * 20)
 mage.currentHealth = mage.maxHealth
 mage.currentMana = mage.maxMana
+mage.spellMod = 1 + (mage.intelligence * 0.2)
+mage.attackMod = 1 + (mage.strength * 0.2)
+mage.defenseMod = 1 - (mage.endurance / 10)
 
 paladin = Character()
 paladin.vitality = 4
@@ -99,9 +107,9 @@ paladin.maxHealth = 100 + (paladin.vitality * 20)
 paladin.maxMana = 100 + (paladin.arcana * 20)
 paladin.currentHealth = paladin.maxHealth
 paladin.currentMana = paladin.maxMana
-paladin.spellMod = 1
-paladin.physicalAttackMod = 1
-paladin.defenseMod = 1
+paladin.spellMod = 1 + (paladin.intelligence * 0.2)
+paladin.attackMod = 1 + (paladin.strength * 0.2)
+paladin.defenseMod = 1 - (paladin.endurance / 10)
 
 def chooseCharacter(choice):
     if choice == "warrior":

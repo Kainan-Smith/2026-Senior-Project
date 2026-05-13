@@ -13,12 +13,12 @@ def displayHealth(char):
     green = Back.GREEN + " "
     red = Back.RED + " "
     print(f"[{int(char.currentHealth)}/{char.maxHealth}]", end="")
-    if char.condition != None:
+    if char.condition != None and char.condition != "Crit":
         print(f" ({char.condition})")
         print("[", end="")
     else:
         print("\n[", end="")
-    while count < 25:
+    while count < 25: 
         if checking <= char.currentHealth:
             if char.currentHealth <= char.maxHealth / 4:
                 print(red, end="")      # Health bar is yellow if 25-50%
@@ -63,9 +63,8 @@ def userTurn(round, player, enemy, conEnds):
     return spell, conEnds
 
 def attackFunction(char, opp):
-    # TODO: Figure out what to do for enemy damage, unless you just want to give them regular items.  You may need to redo the Current Weapon mechanic
-    damage = int((char.currentWeapon.number * char.physicalAttackMod) * opp.defenseMod)
-    print(f"Base Damage: {char.currentWeapon.number}, Attack Mod: {char.physicalAttackMod}, Defense Mod: {opp.defenseMod}")
+    damage = int((char.currentWeapon.number * char.attackMod) * opp.defenseMod)
+    print(f"Base Damage: {char.currentWeapon.number}, Attack Mod: {char.attackMod}, Defense Mod: {opp.defenseMod}")
     opp.currentHealth -= damage
     print(char.name, "attacked", opp.name, "for", damage, "damage.")
 
@@ -97,11 +96,6 @@ def spellFunction(round, char, opp, conEnds):
         opp.currentHealth -= damage
         print(char.name, "casted", spell.name, "on", opp.name, "for", damage, "damage.")
     return spell, conEnds
-
-# TODO: Change Guard Action to Potion Action
-def guardFunction(defMod):
-    defMod /= 2
-    return defMod
 
 def enemyTurn(round, enemy, player, conEnds, spell):
     if round == conEnds:

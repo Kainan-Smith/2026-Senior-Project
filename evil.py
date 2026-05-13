@@ -8,10 +8,12 @@ class Enemy:
         self.strength = 0
         self.endurance = 0
         self.baseDamage = 0
-        self.physicalAttackMod = 1
+        self.attackMod = 1
         self.defenseMod = 1
         self.condition = None
         self.currentWeapon = items.basicSword
+        self.xpGiven = 0
+        self.goldGiven = 0
 
 testDummy = Enemy()
 testDummy.name = "Test Dummy"
@@ -23,6 +25,6 @@ goblin.name = "Goplin"
 goblin.maxHealth = 400
 goblin.strength = 2
 goblin.endurance = 0
-goblin.physicalAttackMod = 1 + (goblin.strength * 0.2)
+goblin.attackMod = 1 + (goblin.strength * 0.2)
 goblin.defenseMod = 1 - (goblin.endurance / 10)
 goblin.currentHealth = goblin.maxHealth

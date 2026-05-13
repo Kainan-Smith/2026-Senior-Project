@@ -139,7 +139,6 @@ rock3.manaCost = 30
 rock3.number = 120
 rock3.damage = True
 
-# TODO: Think about adding rock spells
 
 allSpells = [
     heal1, heal2, heal3,
