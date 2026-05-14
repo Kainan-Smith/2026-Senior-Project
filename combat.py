@@ -57,6 +57,8 @@ def userTurn(round, player, enemy, conEnds):
             attackFunction(player, enemy)
         elif userAction == "Spell" or userAction == "2":
             spell, conEnds = spellFunction(round, player, enemy, conEnds)
+            if spell == "cancelled":
+                continue
         else:
             continue
         actionDone = True
@@ -79,10 +81,18 @@ def spellFunction(round, char, opp, conEnds):
             if playerChoice == item.name and item.known == True:
                 spell = item
                 spellCast = True
+        if spellCast == False:
+            print("Invalid Spell")
+            return "cancelled", conEnds
+        elif spell.manaCost > char.currentMana:
+            print("Not enough Mana")
+            return "cancelled", conEnds
     char.currentMana -= spell.manaCost
     if spell.healing == True:
         healing = int((spell.number * char.spellMod) * char.currentStaff.number)
         char.currentHealth += healing
+        if char.currentHealth > char.maxHealth:
+            char.currentHealth = char.maxHealth
         print(char.name, "casted", spell.name, "and healed for", healing, "HP.")
     if spell.damage == True:
         damage = int(((spell.number * char.spellMod) * char.currentStaff.number) * opp.defenseMod)
@@ -112,20 +122,28 @@ def enemyTurn(round, enemy, player, conEnds, spell):
 def combatLoop(player, enemy):
     round = 1
     conditionEnds = None
-    while player.currentHealth > 0 and enemy.currentHealth > 0:
+    print((player.attackMod))
+    while True:
         print(f"{player.name}: ", end="")
         displayHealth(player)
         displayMana(player)
         print(f"{enemy.name}: ", end="")
         displayHealth(enemy)
+        if player.currentHealth <= 0:
+            break
         spell, conditionEnds = userTurn(round, player, enemy, conditionEnds)
+        if enemy.currentHealth <= 0:
+            break
         enemy.condition = enemyTurn(round, enemy, player, conditionEnds, spell)
-        print(enemy.condition, round, conditionEnds)
-        player.defenseMod = 1 - (player.endurance / 10)
         round += 1
+    enemy.currentHealth = enemy.maxHealth
     player.currentXp += enemy.xpGiven
-    player.money 
+    player.money += enemy.moneyGiven
     print(f"{player.currentXp}/{player.nextLevelXp}")
     print(f"{player.money}")
+    character.LevelUp(player)
 
-combatLoop(character.hero, evil.testDummy)
+keepGoing = None
+while keepGoing != "No":
+    keepGoing = input().title()
+    combatLoop(character.hero, evil.testDummy)

@@ -13,13 +13,14 @@ class Enemy:
         self.condition = None
         self.currentWeapon = items.basicSword
         self.xpGiven = 0
-        self.goldGiven = 0
+        self.moneyGiven = 0
 
 testDummy = Enemy()
 testDummy.name = "Test Dummy"
 testDummy.maxHealth = 200
 testDummy.currentHealth = testDummy.maxHealth
 testDummy.xpGiven = 50
+testDummy.moneyGiven = 25
 
 goblin = Enemy()
 goblin.name = "Goplin"
