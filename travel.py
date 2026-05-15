@@ -1,37 +1,38 @@
-currentPlace = 0
-global visitedPlaces
-visitedPlaces = [2, 3, 4]
+import character
 
-def checkPlaces(currentArea):
-    '''Uses the availablePlaces variable to determine which areas the player can travel to.'''
-    availablePlaces = []
+currentWorld = 1
+visitedWorlds = [2, 3, 4]
+
+def check_worlds(currentArea):
+    '''Uses the availableWorlds variable to determine which areas the player can travel to.'''
+    availableWorlds = []
     if currentArea == 1:
-        availablePlaces = [2, 4]
+        availableWorlds = [2, 4]
     if currentArea == 2:
-        availablePlaces = [1, 3, 5]
+        availableWorlds = [1, 3, 5]
     if currentArea == 3:
-        availablePlaces = [2, 4]
+        availableWorlds = [2, 4]
     if currentArea == 4:
-        availablePlaces = [1, 3, 5, 7]
+        availableWorlds = [1, 3, 5, 7]
     if currentArea == 5:
-        availablePlaces = [2, 4, 6]
+        availableWorlds = [2, 4, 6]
     if currentArea == 6:
-        availablePlaces = [6, 7]
+        availableWorlds = [6, 7]
     if currentArea == 7:
-        availablePlaces = [4, 6, 8]
+        availableWorlds = [4, 6, 8]
     if currentArea == 8:
-        availablePlaces = [7]
-    if currentArea == 0:
-        availablePlaces = [1, 2, 3, 4, 5, 6, 7, 8]
-    return availablePlaces
+        availableWorlds = [7]
+    if currentArea == 0 and :
+        availableWorlds = [1, 2, 3, 4, 5, 6, 7, 8]
+    return availableWorlds
 
-def go_to_new_place(place):
+def go_to_new_place(place, visited):
     # place variable is where you currently are
-    # Try using the "availablePlaces" list to try and condense this code into less lines.
+    # Try using the "availableWorlds" list to try and condense this code into less lines.
     # Try using Xaiden's dictionary method (Just ask him)
-    global visitedPlaces
+    global visitedWorlds
     moving = False
-    available = checkPlaces(place)
+    available = check_worlds(place)
     numAvail = len(available)
     while moving == False:
         print("Would you like to go to ", end="")
@@ -45,7 +46,7 @@ def go_to_new_place(place):
         if playerSelection not in available:
             print(playerSelection, "not available.")
             continue
-        if playerSelection in visitedPlaces:
+        if playerSelection in visited:
             print(f"You've already been to {playerSelection}, go anyways? ('yes' or 'no')")
             yesOrNo = input()
             if yesOrNo == "no":
@@ -53,9 +54,10 @@ def go_to_new_place(place):
         print("Traveling to", playerSelection, "now.")
         moving = True
     newPlace = playerSelection
-    visitedPlaces.append(place)
+    visited.append(place)
+    visited.sort()
     return newPlace
 
-go_to_new_place(currentPlace)
-print("Current Area:", currentPlace)
-print("Area you've been:", visitedPlaces)
+currentWorld = go_to_new_place(currentWorld, visitedWorlds)
+print("Current world:", currentWorld)
+print("Worlds you've visited:", visitedWorlds)

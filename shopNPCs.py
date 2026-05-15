@@ -26,7 +26,7 @@ def checkShop(area):
         shopArea = items.allItems
     return shopArea
 
-def startShopping(area, money):
+def start_shopping(area, money):
     playerChoice = ""
     itemList = checkShop(area)
     print('"Welcome to my shop!"')
@@ -48,6 +48,6 @@ def startShopping(area, money):
 
 area = travel.currentPlace
 
-startShopping(area, inventory.money)
+start_shopping(area, inventory.money)
 
-inventory.displayInventory()
+inventory.display_inentory()

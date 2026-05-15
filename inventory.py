@@ -2,7 +2,7 @@ import items
 import character
 
 
-def updateWeapon(char):
+def update_weapon(char):
     for item in items.weaponsAndStaffs:
         if item.held > 0:
             if item.weapon == True:
@@ -10,7 +10,7 @@ def updateWeapon(char):
             elif item.staff == True:
                 char.currentStaff = item
 
-def displayInventory(char):
+def display_inentory(char):
     # Prints the table view of the inventory.
     print(f"{'Item' :<20}{'Held' :<8}{'|' :<8}{'Description' :<32}")
     print(f"{"=" * 28}{'|'}{'=' * 40}")
@@ -19,8 +19,8 @@ def displayInventory(char):
             print(f"{item.name :<20}{item.held :<8}{'|' :<8}{item.desc :<32}")
     char.money
     print(f"Money: {char.money}")
-    updateWeapon(char)
+    update_weapon(char)
     print(f"Current Weapon: {char.currentWeapon.name}")
     print(f"Current Staff: {char.currentStaff.name}")
 
-displayInventory(character.hero)
+display_inentory(character.hero)

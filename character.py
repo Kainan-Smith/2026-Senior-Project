@@ -23,7 +23,7 @@ class Character:
         self.condition = None
 
 
-def LevelUp(char):
+def level_up(char):
     if hero.currentXp >= hero.nextLevelXp:
         points = 4
         while points > 0:
@@ -110,7 +110,7 @@ paladin.spellMod = 1 + (paladin.intelligence * 0.2)
 paladin.attackMod = 1 + (paladin.strength * 0.2)
 paladin.defenseMod = 1 - (paladin.endurance / 10)
 
-def chooseCharacter(choice):
+def choose_character(choice):
     if choice == "warrior":
         character = warrior
     if choice == "mage":
@@ -120,7 +120,7 @@ def chooseCharacter(choice):
     return character
 
 #    playerChoice = input("Choose a character (Warrior, Mage, or Paladin):\n").lower()
-#    playerCharacter = chooseCharacter(playerChoice)
+#    playerCharacter = choose_character(playerChoice)
 hero = mage
 #   stats = check_modifiers(hero)
 check_modifiers(hero)

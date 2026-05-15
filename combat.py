@@ -5,7 +5,7 @@ import spells
 from colorama import Back
 import random
 
-def displayHealth(char):
+def display_health(char):
     unit = char.maxHealth / 25
     checking = 0
     count = 0
@@ -32,7 +32,7 @@ def displayHealth(char):
         count += 1
     print(Back.RESET + "]")
 
-def displayMana(char):
+def display_mana(char):
     unit = char.maxMana / 25
     checking = 0
     count = 0
@@ -47,16 +47,16 @@ def displayMana(char):
         count += 1
     print(Back.RESET + "]")
 
-def userTurn(round, player, enemy, conEnds):
+def user_turn(round, player, enemy, conEnds):
     print("What will you do?")
     actionDone = False
     while actionDone == False:
         userAction = input(f"{"1. Attack":<12}{"2. Spell":<12}").title()
         spell = None
         if userAction == "Attack" or userAction == "1":
-            attackFunction(player, enemy)
+            attack_function(player, enemy)
         elif userAction == "Spell" or userAction == "2":
-            spell, conEnds = spellFunction(round, player, enemy, conEnds)
+            spell, conEnds = spell_function(round, player, enemy, conEnds)
             if spell == "cancelled":
                 continue
         else:
@@ -64,12 +64,12 @@ def userTurn(round, player, enemy, conEnds):
         actionDone = True
     return spell, conEnds
 
-def attackFunction(char, opp):
+def attack_function(char, opp):
     damage = int((char.currentWeapon.number * char.attackMod) * opp.defenseMod)
     opp.currentHealth -= damage
     print(char.name, "attacked", opp.name, "for", damage, "damage.")
 
-def spellFunction(round, char, opp, conEnds):
+def spell_function(round, char, opp, conEnds):
     # This first code block is just for choosing a spell
     spellCast = False
     while spellCast == False:
@@ -109,41 +109,38 @@ def spellFunction(round, char, opp, conEnds):
         print(char.name, "casted", spell.name, "on", opp.name, "for", damage, "damage.")
     return spell, conEnds
 
-def enemyTurn(round, enemy, player, conEnds, spell):
+def enemy_turn(round, enemy, player, conEnds, spell):
     if round == conEnds:
         enemy.condition = None
     if enemy.condition == "Frozen":
         pass
     elif enemy.condition == "Burned":
         enemy.currentHealth -= spell.damage
-    attackFunction(enemy, player)
+    attack_function(enemy, player)
     return enemy.condition
 
-def combatLoop(player, enemy):
+def combat_loop(player, enemy):
     round = 1
     conditionEnds = None
     print((player.attackMod))
     while True:
         print(f"{player.name}: ", end="")
-        displayHealth(player)
-        displayMana(player)
+        display_health(player)
+        display_mana(player)
         print(f"{enemy.name}: ", end="")
-        displayHealth(enemy)
+        display_health(enemy)
         if player.currentHealth <= 0:
             break
-        spell, conditionEnds = userTurn(round, player, enemy, conditionEnds)
+        spell, conditionEnds = user_turn(round, player, enemy, conditionEnds)
         if enemy.currentHealth <= 0:
             break
-        enemy.condition = enemyTurn(round, enemy, player, conditionEnds, spell)
+        enemy.condition = enemy_turn(round, enemy, player, conditionEnds, spell)
         round += 1
     enemy.currentHealth = enemy.maxHealth
     player.currentXp += enemy.xpGiven
     player.money += enemy.moneyGiven
     print(f"{player.currentXp}/{player.nextLevelXp}")
     print(f"{player.money}")
-    character.LevelUp(player)
+    character.level_up(player)
 
-keepGoing = None
-while keepGoing != "No":
-    keepGoing = input().title()
-    combatLoop(character.hero, evil.testDummy)
+combat_loop(character.hero, evil.testDummy)
