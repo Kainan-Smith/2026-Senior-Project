@@ -142,5 +142,3 @@ def combat_loop(player, enemy):
     print(f"{player.currentXp}/{player.nextLevelXp}")
     print(f"{player.money}")
     character.level_up(player)
-
-combat_loop(character.hero, evil.testDummy)

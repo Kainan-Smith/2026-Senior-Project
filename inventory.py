@@ -22,5 +22,3 @@ def display_inentory(char):
     update_weapon(char)
     print(f"Current Weapon: {char.currentWeapon.name}")
     print(f"Current Staff: {char.currentStaff.name}")
-
-display_inentory(character.hero)
