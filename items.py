@@ -1,5 +1,5 @@
-class InventoryAndShopItem:
-    ''' The InventoryAndShopItem class describes items that can be found in Shops or the player's Inventory. '''
+class Item:
+    ''' The Item class describes items that can be found in Shops or the player's Inventory. '''
     def __init__(self):
         self.name = ""      # The name of the item.
         self.price = 0      # The cost of the item in a shop.
@@ -10,7 +10,7 @@ class InventoryAndShopItem:
         self.weapon = False
         self.staff = False
 
-healthPotion = InventoryAndShopItem()
+healthPotion = Item()
 healthPotion.name = "Health Potion"
 healthPotion.held = 1
 healthPotion.price = 25
@@ -18,7 +18,7 @@ healthPotion.amount = 5
 healthPotion.number = 20
 healthPotion.desc = f"Heals {healthPotion.number} HP."
 
-manaPotion = InventoryAndShopItem()
+manaPotion = Item()
 manaPotion.name = "Mana Potion"
 manaPotion.held = 1
 manaPotion.price = 25
@@ -26,28 +26,28 @@ manaPotion.amount = 5
 manaPotion.number = 20
 manaPotion.desc = f"Recovers {manaPotion.number} MP."
 
-bomb = InventoryAndShopItem()
+bomb = Item()
 bomb.name = "Bomb"
 bomb.price = 50
 bomb.amount = 3
 bomb.number = 25
 bomb.desc = f"Deals {bomb.number} damage when thrown at an enemy."
 
-repel = InventoryAndShopItem()
+repel = Item()
 repel.name = "Repel"
 repel.price = 100
 repel.amount = 2
 repel.number = "N/A"
 repel.desc = "Skips next encounter."
 
-experiencePotion = InventoryAndShopItem()
+experiencePotion = Item()
 experiencePotion.name = "Experience Potion"
 experiencePotion.price = 100
 experiencePotion.amount = 2
 experiencePotion.number = "N/A"
 experiencePotion.desc = "Levels up your character 1 time."
 
-basicSword = InventoryAndShopItem()
+basicSword = Item()
 basicSword.name = "Basic Sword"
 basicSword.held = 1
 basicSword.amount = 1
@@ -55,7 +55,7 @@ basicSword.number = 15
 basicSword.desc = "A basic sword..."
 basicSword.weapon = True
 
-newSword = InventoryAndShopItem()
+newSword = Item()
 newSword.name = "New Sword"
 newSword.price = 150
 newSword.amount = 1
@@ -63,7 +63,7 @@ newSword.number = 20
 newSword.desc = "A new sword."
 newSword.weapon = True
 
-newerSword = InventoryAndShopItem()
+newerSword = Item()
 newerSword.name = "Newer Sword"
 newerSword.price = 200
 newerSword.amount = 1
@@ -71,7 +71,7 @@ newerSword.number = 40
 newerSword.desc = "A newer sword!"
 newerSword.weapon = True
 
-newestSword = InventoryAndShopItem()
+newestSword = Item()
 newestSword.name = "Newest Sword"
 newestSword.price = 250
 newestSword.amount = 1
@@ -79,7 +79,7 @@ newestSword.number = 80
 newestSword.desc = "The newest sword !!"
 newestSword.weapon = True
 
-basicStaff = InventoryAndShopItem()
+basicStaff = Item()
 basicStaff.name = "Basic Staff"
 basicStaff.held = 1
 basicStaff.amount = 1
@@ -87,7 +87,7 @@ basicStaff.number = 1
 basicStaff.desc = "A basic staff..."
 basicStaff.staff = True
 
-newStaff = InventoryAndShopItem()
+newStaff = Item()
 newStaff.name = "New Staff"
 newStaff.price = 150
 newStaff.amount = 1
@@ -95,7 +95,7 @@ newStaff.number = 1.25
 newStaff.desc = "A new staff."
 newStaff.staff = True
 
-newerStaff = InventoryAndShopItem()
+newerStaff = Item()
 newerStaff.name = "Newer Staff"
 newerStaff.price = 200
 newerStaff.amount = 1
@@ -103,7 +103,7 @@ newerStaff.number = 1.5
 newerStaff.desc = "A newer staff!"
 newerStaff.staff = True
 
-newestStaff = InventoryAndShopItem()
+newestStaff = Item()
 newestStaff.name = "Newest Staff"
 newestStaff.price = 250
 newestStaff.amount = 1
@@ -142,3 +142,13 @@ allItems = [
 weaponsAndStaffs = [
     newSword, newerSword, newestSword, newStaff, newerStaff, newestStaff
 ]
+
+ratTail = Item()
+
+
+wolfClaw = Item()
+wolfClaw.name = "Wolf Claw"
+
+goblinEye = Item()
+goblinEye.name = "Goblin Eye"
+
