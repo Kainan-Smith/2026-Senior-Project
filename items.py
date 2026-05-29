@@ -147,8 +147,8 @@ weaponsAndStaffs = [
 hawkTalon = Item()
 hawkTalon.name = "Hawk Talon"
 
-direWolfClaw = Item()
-direWolfClaw.name = "Dire Wolf Claw"
+wolfClaw = Item()
+wolfClaw.name = "Wolf Claw"
 
 goblinEye = Item()
 goblinEye.name = "Goblin Eye"

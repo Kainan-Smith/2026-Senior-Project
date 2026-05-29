@@ -26,7 +26,7 @@ testDummy.moneyGiven = 25
 
 hawk = Enemy()
 
-direWolf = Enemy()
+wolf = Enemy()
 
 goblin = Enemy()
 goblin.name = "Goplin"
