@@ -148,3 +148,13 @@ allSpells = [
     lightning1, lightning2, lightning3,
     rock1, rock2, rock3
 ]
+
+# Spell are acquired as such:
+# World 1 - Heal 1, Rock 1
+# World 2 - Freeze 1, Burn 1
+# World 3 - Lightning 1
+# World 4 - Heal 2, Rock 1
+# World 5 - Freeze 2, Burn 2
+# World 6 - Lightning 2
+# World 7 - Heal 3, Rock 3
+# World 8 - Freeze 3, Burn 3, Lightning 3

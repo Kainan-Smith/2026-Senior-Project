@@ -22,6 +22,12 @@ testDummy.currentHealth = testDummy.maxHealth
 testDummy.xpGiven = 50
 testDummy.moneyGiven = 25
 
+# Regular Area Enemies:
+
+hawk = Enemy()
+
+direWolf = Enemy()
+
 goblin = Enemy()
 goblin.name = "Goplin"
 goblin.maxHealth = 400
@@ -30,3 +36,19 @@ goblin.endurance = 0
 goblin.attackMod = 1 + (goblin.strength * 0.2)
 goblin.defenseMod = 1 - (goblin.endurance / 10)
 goblin.currentHealth = goblin.maxHealth
+
+skeleton = Enemy()
+
+orc = Enemy()
+
+golem = Enemy()
+
+wyrm = Enemy()
+
+demon = Enemy()
+
+# Bosses:
+
+gargoyle = Enemy()
+
+king = Enemy()

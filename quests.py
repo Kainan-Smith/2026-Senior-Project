@@ -6,6 +6,7 @@ class Quest:
         self.item = None
         self.needed = 0
 
-world2Quest = Quest()
-world2Quest.questName = "Goblin Grabber"
-world2Quest.item = items.goblinEye
+world3Quest = Quest()
+world3Quest.questName = "Goblin Grabber"
+world3Quest.item = items.goblinEye
+world3Quest.needed = 8

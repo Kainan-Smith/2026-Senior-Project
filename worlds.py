@@ -1,3 +1,5 @@
+# TODO: REWORK ENTIRE TRAVEL SYSTEM.  JUST GO FROM 1 TO 2 TO 3 ETC
+
 import items
 import evil
 import combat

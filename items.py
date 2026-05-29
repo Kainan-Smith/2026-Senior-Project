@@ -143,12 +143,27 @@ weaponsAndStaffs = [
     newSword, newerSword, newestSword, newStaff, newerStaff, newestStaff
 ]
 
-ratTail = Item()
 
+hawkTalon = Item()
+hawkTalon.name = "Hawk Talon"
 
-wolfClaw = Item()
-wolfClaw.name = "Wolf Claw"
+direWolfClaw = Item()
+direWolfClaw.name = "Dire Wolf Claw"
 
 goblinEye = Item()
 goblinEye.name = "Goblin Eye"
 
+skeletonSkull = Item()
+skeletonSkull.name = "Skeleton Skull"
+
+orcFang = Item()
+orcFang.name = "Orc Fang"
+
+golemHead = Item()
+golemHead.name = "Golem Head"
+
+wyrmTooth = Item()
+wyrmTooth.name = "Wyrm Tooth"
+
+demonWing = Item()
+demonWing.name = "Demon Wing"
