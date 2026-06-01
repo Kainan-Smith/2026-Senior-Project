@@ -1,3 +1,5 @@
+# TODO: Do something about the consumables, look at the assignmnt details to see what is required.
+
 class Item:
     ''' The Item class describes items that can be found in Shops or the player's Inventory. '''
     def __init__(self):

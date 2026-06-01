@@ -1,5 +1,4 @@
 import character
-import evil
 import spells
 
 from colorama import Back

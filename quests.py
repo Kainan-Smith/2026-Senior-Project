@@ -1,18 +1,45 @@
 import items
 
+def show_quests(questList):
+    for quest in questList:
+        print(f"{quest.questName}:")
+        print(f"{quest.item.name:<20}{quest.item.held}/{quest.needed:<8}")
+
+def add_quest(hero, world):
+    myList = hero.questList
+    if world.value == 1:
+        myList.append(world1Quest)
+    elif world.value == 2:
+        myList.append(world2Quest)
+    elif world.value == 3:
+        myList.append(world3Quest)
+    elif world.value == 4:
+        myList.append(world4Quest)
+    elif world.value == 5:
+        myList.append(world5Quest)
+    elif world.value == 6:
+        myList.append(world6Quest)
+    elif world.value == 7:
+        myList.append(world7Quest)
+    elif world.value == 8:
+        myList.append(world8Quest)
+    hero.questList = list(set(myList))
+    show_quests(hero.questList)
+
 class Quest:
     def __init__(self):
         self.questName = ""
         self.item = None
         self.needed = 0
+        self.completed = False
 
 world1Quest = Quest()
-world1Quest.quest.name = "Stupid Dog"
+world1Quest.questName = "Stupid Dog"
 world1Quest.item = items.wolfClaw
 world1Quest.needed = 8
 
 world2Quest = Quest()
-world2Quest.quest.name = "Birdbrain"
+world2Quest.questName = "Birdbrain"
 world2Quest.item = items.hawkTalon
 world2Quest.needed = 8
 

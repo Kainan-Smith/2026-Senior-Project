@@ -21,6 +21,9 @@ class Character:
         self.currentWeapon = items.newSword
         self.currentStaff = items.basicStaff
         self.condition = None
+        self.questList = []
+        self.currentWorld = 1
+        self.visitedWorlds = []
 
 
 def level_up(char):
