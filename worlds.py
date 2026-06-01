@@ -1,4 +1,3 @@
-# TODO: REWORK ENTIRE TRAVEL SYSTEM.  JUST GO FROM 1 TO 2 TO 3 ETC
 
 import items
 import evil
@@ -20,18 +19,20 @@ world1.name = "Planet Name 1"
 world1.desc = "An adverb adjective world with noun 1"
 world1.shop = items.area1Items
 world1.shopname = "Stoobert"
-world1.enemies = evil.goblin
+world1.enemy = evil.goblin
+
+def 
 
 def arrive(world):
     print(f"Welcome to {world.name}!")
     print(world.desc)
     while True:
-        playerChoice = input("Talk, Fight, Shop, Quests, or Travel? ").title()
+        playerChoice = input("Talk, Fight, Shop, Inventory, Quests, or Travel? ").title()
         if playerChoice == "Talk":
             continue
         elif playerChoice == "Fight":
             while True:
-                combat.combat_loop(character.hero, evil.testDummy)
+                combat.combat_loop(character.hero, world1.enemy)
                 choice2 = input("Fight again? (1: Yes  0: No)").title()
                 if choice2 == "1" or choice2 == "Yes":
                     choice2 = 0
@@ -39,6 +40,8 @@ def arrive(world):
                     break
         elif playerChoice == "Shop":
             shop.start_shopping(world, character.hero.money)
+        elif playerChoice == "Inventory":
+            inventory.display_inentory(character.hero)
         elif playerChoice == "Quests":
             pass
         elif playerChoice == "Travel":

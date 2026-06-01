@@ -111,6 +111,32 @@ newestStaff.number = 2
 newestStaff.desc = "The newest staff !!"
 newestStaff.staff = True
 
+
+hawkTalon = Item()
+hawkTalon.name = "Hawk Talon"
+
+wolfClaw = Item()
+wolfClaw.name = "Wolf Claw"
+
+goblinEye = Item()
+goblinEye.name = "Goblin Eye"
+
+skull = Item()
+skull.name = "Skull"
+
+orcFang = Item()
+orcFang.name = "Orc Fang"
+
+golemHead = Item()
+golemHead.name = "Golem Head"
+
+wyrmTooth = Item()
+wyrmTooth.name = "Wyrm Tooth"
+
+demonWing = Item()
+demonWing.name = "Demon Wing"
+
+
 area1Items = [
     healthPotion, bomb
 ]
@@ -136,34 +162,9 @@ area6to8Items = [
 ]
 
 allItems = [
-    healthPotion, manaPotion, bomb, repel, experiencePotion
+    healthPotion, manaPotion, bomb, repel, experiencePotion, hawkTalon, wolfClaw, goblinEye, skull, orcFang, golemHead, wyrmTooth, demonWing
 ]
 
 weaponsAndStaffs = [
     newSword, newerSword, newestSword, newStaff, newerStaff, newestStaff
 ]
-
-
-hawkTalon = Item()
-hawkTalon.name = "Hawk Talon"
-
-wolfClaw = Item()
-wolfClaw.name = "Wolf Claw"
-
-goblinEye = Item()
-goblinEye.name = "Goblin Eye"
-
-skeletonSkull = Item()
-skeletonSkull.name = "Skeleton Skull"
-
-orcFang = Item()
-orcFang.name = "Orc Fang"
-
-golemHead = Item()
-golemHead.name = "Golem Head"
-
-wyrmTooth = Item()
-wyrmTooth.name = "Wyrm Tooth"
-
-demonWing = Item()
-demonWing.name = "Demon Wing"

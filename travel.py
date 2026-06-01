@@ -3,7 +3,6 @@ import character
 currentWorld = 1
 visitedWorlds = [2, 3, 4]
 
-# TODO: Change traveling to previous worlds.  Instead of confirming if the player wants to travel to a world they've already been to, just writ "(Visited)" next to the name of the world or something.
 def check_worlds(currentArea):
     '''Uses the availableWorlds variable to determine which areas the player can travel to.'''
     availableWorlds = []
@@ -23,7 +22,7 @@ def check_worlds(currentArea):
         availableWorlds = [4, 6, 8]
     if currentArea == 8:
         availableWorlds = [7]
-    if currentArea == 0 and character.hero.name == "Dev":
+    if currentArea == 0 and character.hero.name == "Chris Bar":
         availableWorlds = [1, 2, 3, 4, 5, 6, 7, 8]
     return availableWorlds
 
@@ -33,6 +32,7 @@ def go_to_new_place(place, visited):
     moving = False
     available = check_worlds(place)
     numAvail = len(available)
+    print("Worlds you've visited:", visitedWorlds)
     while moving == False:
         print("Would you like to go to ", end="")
         if numAvail > 2:
@@ -45,11 +45,6 @@ def go_to_new_place(place, visited):
         if playerSelection not in available:
             print(playerSelection, "not available.")
             continue
-        if playerSelection in visited:
-            print(f"You've already been to {playerSelection}, go anyways? ('yes' or 'no')")
-            yesOrNo = input()
-            if yesOrNo == "no":
-                continue
         print("Traveling to", playerSelection, "now.")
         moving = True
     newPlace = playerSelection
@@ -59,4 +54,3 @@ def go_to_new_place(place, visited):
 
 currentWorld = go_to_new_place(currentWorld, visitedWorlds)
 print("Current world:", currentWorld)
-print("Worlds you've visited:", visitedWorlds)

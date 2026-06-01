@@ -14,6 +14,7 @@ class Enemy:
         self.currentWeapon = items.basicSword
         self.xpGiven = 0
         self.moneyGiven = 0
+        self.itemDropped = None
 
 testDummy = Enemy()
 testDummy.name = "Test Dummy"
@@ -21,12 +22,15 @@ testDummy.maxHealth = 200
 testDummy.currentHealth = testDummy.maxHealth
 testDummy.xpGiven = 50
 testDummy.moneyGiven = 25
+testDummy.itemDropped = items.skull
 
 # Regular Area Enemies:
 
-hawk = Enemy()
-
 wolf = Enemy()
+wolf.itemDropped = items.wolfClaw
+
+hawk = Enemy()
+hawk.itemDropped = items.hawkTalon
 
 goblin = Enemy()
 goblin.name = "Goplin"
@@ -36,16 +40,22 @@ goblin.endurance = 0
 goblin.attackMod = 1 + (goblin.strength * 0.2)
 goblin.defenseMod = 1 - (goblin.endurance / 10)
 goblin.currentHealth = goblin.maxHealth
+goblin.itemDropped = items.goblinEye
 
 skeleton = Enemy()
+skeleton.itemDropped = items.skull
 
 orc = Enemy()
+orc.itemDropped = items.orcFang
 
 golem = Enemy()
+golem.itemDropped = items.golemHead
 
 wyrm = Enemy()
+wyrm.itemDropped = items.wyrmTooth
 
 demon = Enemy()
+demon.itemDropped = items.demonWing
 
 # Bosses:
 

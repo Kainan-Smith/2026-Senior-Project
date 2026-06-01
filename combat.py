@@ -130,7 +130,7 @@ def combat_loop(player, enemy):
         print(f"{enemy.name}: ", end="")
         display_health(enemy)
         if player.currentHealth <= 0:
-            break
+            return
         spell, conditionEnds = user_turn(round, player, enemy, conditionEnds)
         if enemy.currentHealth <= 0:
             break
@@ -139,6 +139,7 @@ def combat_loop(player, enemy):
     enemy.currentHealth = enemy.maxHealth
     player.currentXp += enemy.xpGiven
     player.money += enemy.moneyGiven
+    enemy.itemDropped.held += 1
     print(f"{player.currentXp}/{player.nextLevelXp}")
     print(f"{player.money}")
     character.level_up(player)
