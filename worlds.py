@@ -6,7 +6,6 @@ import character
 import shop
 import inventory
 import quests
-import travel
 
 class World:
     def __init__(self):
@@ -60,18 +59,82 @@ world8.value = 8
 world8.name = "Planet Name 8"
 world8.desc = "An adverb adjective world with noun 8"
 
+world0 = World()
+world0.value = 0
+world0.name = "Planet Name 0"
+world0.desc = "Dev Area"
+
 allWorlds = [
-    world1, world2, world3, world4, world5, world6, world7, world8
+    world1, world2, world3, world4, world5, world6, world7, world8, world0
 ]
+
+def check_worlds(currentArea):
+    #   Uses the availableWorlds variable to determine which areas the player can travel to.
+    availableWorlds = []
+    if currentArea == world1:
+        availableWorlds = [world2, world4]
+    elif currentArea == world2:
+        availableWorlds = [world1, world3, world5]
+    elif currentArea == world3:
+        availableWorlds = [world2, world4]
+    elif currentArea == world4:
+        availableWorlds = [world1, world3, world5, world7]
+    elif currentArea == world5:
+        availableWorlds = [world2, world4, world6]
+    elif currentArea == world6:
+        availableWorlds = [world6, world7]
+    elif currentArea == world7:
+        availableWorlds = [world4, world6, world8]
+    elif currentArea == world8:
+        availableWorlds = [world7]
+    # You can probably delete the second condition and just make it so that you can only get to World 0 if hero.name == "Chris Bar"
+    elif currentArea == world0 and character.hero.name == "Chris Bar":
+        availableWorlds = [world1, world2, world3, world4, world5, world6, world7, world8]
+    return availableWorlds
+
+def go_to_new_place(hero, allWorlds):
+    # place variable is where you currently are
+    moving = False
+    available = check_worlds(hero.currentWorld)
+    numAvail = len(available)
+    if len(hero.visitedWorlds) > 0:
+        print("World(s) you've visited: ", end="")
+        if len(hero.visitedWorlds) > 1:
+            for count in range(len(hero.visitedWorlds) - 1):
+                print(f"{hero.visitedWorlds[count].name}, ", end="")
+            print(f"and {hero.visitedWorlds[-1].name}")
+        else:
+            print(hero.visitedWorlds[0].name)
+    while moving == False:
+        print("Would you like to go to ", end="")
+        if numAvail > 2:
+            for count in range(numAvail - 1):
+                print(f"{available[count].name}, ", end="")
+            print(f"or {available[-1].name}?")
+        else:
+            print(f"{available[0].name} or {available[1].name}?")
+        playerSelection = int(input())
+        worldChecked = allWorlds[playerSelection - 1]
+        if worldChecked not in available:
+            print(worldChecked.name, "not available.")
+            continue
+        print("Traveling to", playerSelection, "now.")
+        moving = True
+    newPlace = worldChecked
+    hero.visitedWorlds.append(hero.currentWorld)
+    print(hero.visitedWorlds)
+    hero.currentWorld = newPlace
 
 def sleep_at_inn(hero):
     hero.currentHealth = hero.maxHealth
     hero.currentMana = hero.maxMana
     print(f"You wake up feeling very refreshed! \n(Health filled to {hero.currentHealth} and Mana filled to {hero.currentMana})")
 
-def arrive(world, hero):
-    print(f"Welcome to {world.name}!")
-    print(world.desc)
+def arrive(hero):
+    if hero.currentWorld == None:
+        hero.currentWorld = world1
+    print(f"Welcome to {hero.currentWorld.name}!")
+    print(hero.currentWorld.desc)
     while True:
         playerChoice = input("Talk, Rest, Fight, Shop, Inventory, Quests, Stats, or Travel? ").title()
         if playerChoice == "Talk":
@@ -80,7 +143,7 @@ def arrive(world, hero):
             sleep_at_inn(hero)
         elif playerChoice == "Fight":
             while True:
-                combat.combat_loop(hero, world.enemy)
+                combat.combat_loop(hero, hero.currentWorld.enemy)
                 if hero.currentHealth <= 0:
                     print("You black out suddenly and a nearby traveller carries you to the closest Inn...")
                     sleep_at_inn(hero)
@@ -91,14 +154,14 @@ def arrive(world, hero):
                 else:
                     break
         elif playerChoice == "Shop":
-            shop.start_shopping(world, hero.money)
+            shop.start_shopping(hero.currentWorld, hero.money)
         elif playerChoice == "Inventory":
             inventory.display_inentory(hero)
         elif playerChoice == "Quests":
-            quests.add_quest(hero, world)
+            quests.add_quest(hero, hero.currentWorld)
         elif playerChoice == "Stats":
             pass
         elif playerChoice == "Travel":
             # Fix Combat and Quests not changing when travelling.
-            travel.go_to_new_place(hero)
-arrive(world1, character.hero)
+            go_to_new_place(hero, allWorlds)
+arrive(character.hero)

@@ -22,7 +22,7 @@ class Character:
         self.currentStaff = items.basicStaff
         self.condition = None
         self.questList = []
-        self.currentWorld = 1
+        self.currentWorld = None
         self.visitedWorlds = []
 
 
