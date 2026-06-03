@@ -18,7 +18,7 @@ class World:
 
 world1 = World()
 world1.value = 1
-world1.name = "Planet Name 1"
+world1.name = "Place Name 1"
 world1.desc = "An adverb adjective world with noun 1"
 world1.shop = items.area1Items
 world1.shopname = "Stoobert"
@@ -26,46 +26,51 @@ world1.enemy = evil.goblin
 
 world2 = World()
 world2.value = 2
-world2.name = "Planet Name 2"
+world2.name = "Place Name 2"
 world2.desc = "An adverb adjective world with noun 2"
 
 world3 = World()
 world3.value = 3
-world3.name = "Planet Name 3"
+world3.name = "Place Name 3"
 world3.desc = "An adverb adjective world with noun 3"
 
 world4 = World()
 world4.value = 4
-world4.name = "Planet Name 4"
+world4.name = "Place Name 4"
 world4.desc = "An adverb adjective world with noun 4"
 
 world5 = World()
 world5.value = 5
-world5.name = "Planet Name 5"
+world5.name = "Place Name 5"
 world5.desc = "An adverb adjective world with noun 5"
 
 world6 = World()
 world6.value = 6
-world6.name = "Planet Name 6"
+world6.name = "Place Name 6"
 world6.desc = "An adverb adjective world with noun 6"
 
 world7 = World()
 world7.value = 7
-world7.name = "Planet Name 7"
+world7.name = "Place Name 7"
 world7.desc = "An adverb adjective world with noun 7"
 
 world8 = World()
 world8.value = 8
-world8.name = "Planet Name 8"
+world8.name = "Place Name 8"
 world8.desc = "An adverb adjective world with noun 8"
+
+world9 = World()
+world9.value = 9
+world9.name = "Secret Boss Area"
+world9.desc = "Final Boss"
 
 world0 = World()
 world0.value = 0
-world0.name = "Planet Name 0"
+world0.name = "Place Name 0"
 world0.desc = "Dev Area"
 
 allWorlds = [
-    world1, world2, world3, world4, world5, world6, world7, world8, world0
+    world1, world2, world3, world4, world5, world6, world7, world8, world9, world0
 ]
 
 def check_worlds(currentArea):
@@ -86,10 +91,14 @@ def check_worlds(currentArea):
     elif currentArea == world7:
         availableWorlds = [world4, world6, world8]
     elif currentArea == world8:
+        # TODO:
+        # if all quests are completed:
+        #    availableWorlds = [world7, world9]
         availableWorlds = [world7]
-    # You can probably delete the second condition and just make it so that you can only get to World 0 if hero.name == "Chris Bar"
-    elif currentArea == world0 and character.hero.name == "Chris Bar":
+    elif currentArea == world0:
         availableWorlds = [world1, world2, world3, world4, world5, world6, world7, world8]
+    if currentArea != world0 and character.hero.name == "Chris Bar":
+        availableWorlds.append(world0)
     return availableWorlds
 
 def go_to_new_place(hero, allWorlds):
@@ -98,6 +107,7 @@ def go_to_new_place(hero, allWorlds):
     available = check_worlds(hero.currentWorld)
     numAvail = len(available)
     if len(hero.visitedWorlds) > 0:
+        print("Type \"Cancel\" to go back.")
         print("World(s) you've visited: ", end="")
         if len(hero.visitedWorlds) > 1:
             for count in range(len(hero.visitedWorlds) - 1):
@@ -111,9 +121,19 @@ def go_to_new_place(hero, allWorlds):
             for count in range(numAvail - 1):
                 print(f"{available[count].name}, ", end="")
             print(f"or {available[-1].name}?")
+        elif numAvail == 1:
+            print(f"{available[0].name}?")
         else:
             print(f"{available[0].name} or {available[1].name}?")
-        playerSelection = int(input())
+        while True:
+                playerSelection = input()
+                if playerSelection.isdigit():
+                    playerSelection = int(playerSelection)
+                    break
+                else:
+                    playerSelection = playerSelection.title()
+                    if playerSelection == "Cancel":
+                        return
         worldChecked = allWorlds[playerSelection - 1]
         if worldChecked not in available:
             print(worldChecked.name, "not available.")
@@ -122,7 +142,6 @@ def go_to_new_place(hero, allWorlds):
         moving = True
     newPlace = worldChecked
     hero.visitedWorlds.append(hero.currentWorld)
-    print(hero.visitedWorlds)
     hero.currentWorld = newPlace
 
 def sleep_at_inn(hero):
