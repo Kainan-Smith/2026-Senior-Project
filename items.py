@@ -116,6 +116,7 @@ newestStaff.staff = True
 
 hawkTalon = Item()
 hawkTalon.name = "Hawk Talon"
+hawkTalon.held = 8
 
 wolfClaw = Item()
 wolfClaw.name = "Wolf Claw"
@@ -138,6 +139,9 @@ wyrmTooth.name = "Wyrm Tooth"
 demonWing = Item()
 demonWing.name = "Demon Wing"
 
+questItems = [
+    hawkTalon, wolfClaw, goblinEye, skull, orcFang, golemHead, wyrmTooth, demonWing
+]
 
 area1Items = [
     healthPotion, bomb

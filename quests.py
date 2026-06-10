@@ -14,15 +14,21 @@ def add_quest(hero, world):
                 hero.questList.append(item)
     show_quests(hero.questList)
 
-# WORLD 8 CAN'T TRAVEL
+def check_quests():
+    for item in items.questItems:
+        i = items.questItems.index(item)
+        quest = allQuests[i]
+        if item.held >= quest.needed:
+            quest.completed = True
+            print("gort")
 
 class Quest:
     def __init__(self):
         self.questName = ""
         self.item = None
         self.needed = 0
-        self.completed = False
         self.world = 0
+        self.completed = False
 
 world1Quest = Quest()
 world1Quest.questName = "Stupid Dog (1)"
@@ -75,3 +81,5 @@ world8Quest.world = 8
 allQuests = [
     world1Quest, world2Quest, world3Quest, world4Quest, world5Quest, world6Quest, world7Quest, world8Quest
 ]
+
+check_quests()
