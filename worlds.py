@@ -17,55 +17,76 @@ class World:
 
 world1 = World()
 world1.value = 1
-world1.name = "Place Name 1"
-world1.desc = "An adverb adjective world with noun 1"
+world1.name = "Greenhaven (1)"
+world1.desc = "The largest city in the world, known for its lush fauna and diverse ecosystem."
 world1.shop = items.area1Items
-world1.shopname = "Stoobert"
-world1.enemy = evil.goblin
+world1.shopName = "Mira"
+world1.enemy = evil.wolf
 
 world2 = World()
 world2.value = 2
-world2.name = "Place Name 2"
-world2.desc = "An adverb adjective world with noun 2"
+world2.name = "Westbarrow (2)"
+world2.desc = "A small village known mostly as a midpoint between GreenHhaven and Thornhollow."
+world2.shopName = "Dorian"
+world2.shop = items.area2Items
+world2.enemy = evil.hawk
 
 world3 = World()
 world3.value = 3
-world3.name = "Place Name 3"
-world3.desc = "An adverb adjective world with noun 3"
+world3.name = "Thornhollow (3)"
+world3.desc = "A city to the North of the Western Plains."
+world3.shopname = "Stoobert"
+world3.shop = items.area3Items
+world3.enemy = evil.goblin
 
 world4 = World()
 world4.value = 4
-world4.name = "Place Name 4"
-world4.desc = "An adverb adjective world with noun 4"
+world4.name = "Thornhollow Catacombs (4)"
+world4.desc = "Dank cave systems just outside of Thornhollow, it's said to hold the tomb of the founder of the village."
+world4.shopName = "Earl the Grey"
+world4.shop = items.area4Items
+world4.enemy = evil.skeleton
 
 world5 = World()
 world5.value = 5
-world5.name = "Place Name 5"
-world5.desc = "An adverb adjective world with noun 5"
+world5.name = "Dewpoint (5)"
+world5.desc = "A small town on the outskirts of the snowy mountains."
+world5.shopName = "Kael"
+world5.shop = items.area5Items
+world5.enemy = evil.orc
 
 world6 = World()
 world6.value = 6
-world6.name = "Place Name 6"
-world6.desc = "An adverb adjective world with noun 6"
+world6.name = "Highwind Pass (6)"
+world6.desc = "A village deep in the heart of the Northern Mountains."
+world6.shopName = "Garett (Short for Cigarette)"
+world6.shop = items.area6to8Items
+world6.enemy = evil.golem
 
 world7 = World()
 world7.value = 7
-world7.name = "Place Name 7"
-world7.desc = "An adverb adjective world with noun 7"
+world7.name = "Dunewatch (7)"
+world7.desc = "A large city in the center of the Eastern Desert."
+world7.shopName = "Victor"
+world7.shop = items.area6to8Items
+world7.enemy = evil.wyrm
 
 world8 = World()
 world8.value = 8
-world8.name = "Place Name 8"
-world8.desc = "An adverb adjective world with noun 8"
+world8.name = "Hell's Maw (8)"
+world8.desc = "A manmade canyon designed to guard King Averitt's palace."
+world8.shopName = "Jarl"
+world8.shop = items.area6to8Items
+world8.enemy = evil.demon
 
 world9 = World()
 world9.value = 9
-world9.name = "Secret Boss Area"
+world9.name = "Corrupted King's Palace (9)"
 world9.desc = "Final Boss"
 
 world0 = World()
 world0.value = 0
-world0.name = "Place Name 0"
+world0.name = "Dev Area"
 world0.desc = "Dev Area"
 
 allWorlds = [
@@ -90,10 +111,7 @@ def check_worlds(currentArea):
     elif currentArea == world7:
         availableWorlds = [world4, world6, world8]
     elif currentArea == world8:
-        # TODO:
-        # if all quests are completed:
-        #    availableWorlds = [world7, world9]
-        availableWorlds = [world7]
+        availableWorlds = [world7, world9]
     elif currentArea == world0:
         availableWorlds = [world1, world2, world3, world4, world5, world6, world7, world8]
     if currentArea != world0 and character.hero.name == "Chris Bar":
@@ -154,10 +172,23 @@ def arrive(hero):
     print(f"Welcome to {hero.currentWorld.name}!")
     print(hero.currentWorld.desc)
     while True:
+        if hero.currentWorld == world0:
+            hero.vitality = int(input())
+            hero.arcana = int(input())
+            hero.strength = int(input())
+            hero.intelligence = int(input())
+            hero.endurance = int(input())
+        if hero.currentWorld == world5 and evil.gargoyle.defeated == False:
+            combat.combat_loop(hero, evil.gargoyle)
+        if hero.currentWorld == world9:
+            if items.finalBossKey.held == 0:
+                print("Bad Ending")
+                print("You reached the Corrupted King's palace, but you can't get in.  (Try doing all the quests next time)")
+                break
+            else:
+                combat.combat_loop(hero, evil.king)
         playerChoice = input("Talk, Rest, Fight, Shop, Inventory, Quests, Stats, or Travel? ").title()
-        if playerChoice == "Talk":
-            continue
-        elif playerChoice == "Rest":
+        if playerChoice == "Rest":
             sleep_at_inn(hero)
         elif playerChoice == "Fight":
             while True:
@@ -185,4 +216,3 @@ def arrive(hero):
         elif playerChoice == "Travel":
             # Fix Combat and Quests not changing when travelling.
             go_to_new_place(hero, allWorlds)
-arrive(character.hero)

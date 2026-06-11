@@ -12,42 +12,6 @@ class Item:
         self.weapon = False
         self.staff = False
 
-healthPotion = Item()
-healthPotion.name = "Health Potion"
-healthPotion.held = 1
-healthPotion.price = 25
-healthPotion.amount = 5
-healthPotion.number = 20
-healthPotion.desc = f"Heals {healthPotion.number} HP."
-
-manaPotion = Item()
-manaPotion.name = "Mana Potion"
-manaPotion.held = 1
-manaPotion.price = 25
-manaPotion.amount = 5
-manaPotion.number = 20
-manaPotion.desc = f"Recovers {manaPotion.number} MP."
-
-bomb = Item()
-bomb.name = "Bomb"
-bomb.price = 50
-bomb.amount = 3
-bomb.number = 25
-bomb.desc = f"Deals {bomb.number} damage when thrown at an enemy."
-
-repel = Item()
-repel.name = "Repel"
-repel.price = 100
-repel.amount = 2
-repel.number = "N/A"
-repel.desc = "Skips next encounter."
-
-experiencePotion = Item()
-experiencePotion.name = "Experience Potion"
-experiencePotion.price = 100
-experiencePotion.amount = 2
-experiencePotion.number = "N/A"
-experiencePotion.desc = "Levels up your character 1 time."
 
 basicSword = Item()
 basicSword.name = "Basic Sword"
@@ -116,7 +80,6 @@ newestStaff.staff = True
 
 hawkTalon = Item()
 hawkTalon.name = "Hawk Talon"
-hawkTalon.held = 8
 
 wolfClaw = Item()
 wolfClaw.name = "Wolf Claw"
@@ -139,36 +102,39 @@ wyrmTooth.name = "Wyrm Tooth"
 demonWing = Item()
 demonWing.name = "Demon Wing"
 
+finalBossKey = Item()
+finalBossKey.name = "Mysterious Key"
+
 questItems = [
-    hawkTalon, wolfClaw, goblinEye, skull, orcFang, golemHead, wyrmTooth, demonWing
+    wolfClaw, hawkTalon, goblinEye, skull, orcFang, golemHead, wyrmTooth, demonWing
 ]
 
 area1Items = [
-    healthPotion, bomb
+    newSword, newStaff
 ]
 
 area2Items = [
-    healthPotion, manaPotion, bomb, repel
+    newSword, newStaff
 ]
 
 area3Items = [
-    healthPotion, manaPotion, bomb, repel, experiencePotion
+    newSword, newStaff
 ]
 
 area4Items = [
-    healthPotion, manaPotion, bomb, repel, experiencePotion, newSword, newStaff
+    newerSword, newerStaff
 ]
 
 area5Items = [
-    healthPotion, manaPotion, bomb, repel, experiencePotion, newerSword, newerStaff
+    newerSword, newerStaff
 ]
 
 area6to8Items = [
-    healthPotion, manaPotion, bomb, repel, experiencePotion, newestSword, newestStaff
+    newestSword, newestStaff
 ]
 
 allItems = [
-    healthPotion, manaPotion, bomb, repel, experiencePotion, hawkTalon, wolfClaw, goblinEye, skull, orcFang, golemHead, wyrmTooth, demonWing
+    wolfClaw, hawkTalon, goblinEye, skull, orcFang, golemHead, wyrmTooth, demonWing
 ]
 
 weaponsAndStaffs = [

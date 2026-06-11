@@ -8,7 +8,9 @@ def slow_print(text):
     time.sleep(0.1)
 
 def intro_sequence():
-    slow_print("This is the intro sequence to the game.")
-    slow_print("Proper text and lore will be implemented later")
+    slow_print("You wake up like any other day, it's dark even in the morning.")
+    slow_print("The Corrupted King Averitt has started sending his dark forces to wreak havoc upon the world.")
+    slow_print("You may be the only one brave enough to stop him.")
+    slow_print("What will you do?")
 
 intro_sequence()

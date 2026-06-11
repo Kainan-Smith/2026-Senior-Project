@@ -121,6 +121,7 @@ def enemy_turn(round, enemy, player, conEnds, spell):
 def combat_loop(player, enemy):
     round = 1
     conditionEnds = None
+    enemy.currentHealth = enemy.maxHealth
     print((player.attackMod))
     while True:
         print(f"{player.name}: ", end="")
@@ -135,7 +136,6 @@ def combat_loop(player, enemy):
             break
         enemy.condition = enemy_turn(round, enemy, player, conditionEnds, spell)
         round += 1
-    enemy.currentHealth = enemy.maxHealth
     player.currentXp += enemy.xpGiven
     player.money += enemy.moneyGiven
     enemy.itemDropped.held += 1

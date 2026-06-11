@@ -22,6 +22,15 @@ def check_quests():
             quest.completed = True
             print("gort")
 
+def check_quests():
+    checking = 0
+    for quest in allQuests:
+        if quest.completed == True:
+            checking += 1
+            if checking == 8:
+                items.finalBossKey.held = 1
+    
+
 class Quest:
     def __init__(self):
         self.questName = ""
