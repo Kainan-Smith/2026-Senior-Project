@@ -1,4 +1,3 @@
-
 import items
 import evil
 import combat
@@ -179,7 +178,10 @@ def arrive(hero):
         elif playerChoice == "Quests":
             quests.add_quest(hero, hero.currentWorld)
         elif playerChoice == "Stats":
-            pass
+            character.print_stats(hero)
+            print("-" * 30)
+            character.check_modifiers(hero)
+            character.print_modifiers(hero)
         elif playerChoice == "Travel":
             # Fix Combat and Quests not changing when travelling.
             go_to_new_place(hero, allWorlds)

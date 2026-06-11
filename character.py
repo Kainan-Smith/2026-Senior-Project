@@ -64,12 +64,19 @@ def check_modifiers(char):
     char.attackMod = 1 + (char.strength * 0.2)
     char.defenseMod = 1 - (char.endurance / 10)
 
-def print_modifiers(mods):
-    print(f"Max Health: {mods["Health"]}")
-    print(f"Max Mana: {mods["Mana"]}")
-    print(f"Spell Attack Mod.: {mods["Spell Attack Mod."]}")
-    print(f"Physical Attack Mod.: {mods["Physical Attack Mod."]}")
-    print(f"Defense Mod.: {mods["Defense Mod."]}")
+def print_modifiers(char):
+    print(f"Max Health: {char.maxHealth}")
+    print(f"Max Mana: {char.maxMana}")
+    print(f"Spell Attack Mod.: {char.spellMod}")
+    print(f"Physical Attack Mod.: {char.attackMod}")
+    print(f"Defense Mod.: {char.defenseMod}")
+
+def print_stats(char):
+    print(f"VIT: {char.vitality}")
+    print(f"ARC: {char.arcana}")
+    print(f"INT: {char.intelligence}")
+    print(f"STR: {char.strength}")
+    print(f"END: {char.endurance}")
 
 warrior = Character()
 warrior.vitality = 5
@@ -126,4 +133,3 @@ def choose_character(choice):
 #    playerCharacter = choose_character(playerChoice)
 hero = mage
 #   stats = check_modifiers(hero)
-check_modifiers(hero)
